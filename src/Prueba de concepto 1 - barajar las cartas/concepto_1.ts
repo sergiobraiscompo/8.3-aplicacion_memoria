@@ -1,13 +1,5 @@
 import { imagenes } from "../datos";
 
-let i = 0;
-const muestra_elementos_array = (lista: string[]) => {
-    while (i < lista.length) {
-        console.log(i, lista[i]);
-        i++;
-    }
-}
-
 const mezcla_y_devuelve_array = (lista:string[]) => {
     let indice_actual =  lista.length;
     let lista_mezclada = []
@@ -28,5 +20,4 @@ const mezcla_y_devuelve_array = (lista:string[]) => {
     return lista_mezclada;
 }
 
-muestra_elementos_array(imagenes);
 console.log(mezcla_y_devuelve_array(imagenes));

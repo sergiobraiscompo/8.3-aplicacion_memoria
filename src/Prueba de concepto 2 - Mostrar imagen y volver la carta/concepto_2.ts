@@ -1,4 +1,4 @@
-import { imagenes } from "./datos";
+import { imagenes } from "../datos";
 const carta_element = document.getElementById("carta-element");
 let lista_mezclada: string[] = [];
 
