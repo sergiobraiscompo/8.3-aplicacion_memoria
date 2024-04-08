@@ -22,11 +22,15 @@ body {
 
 .carta-element {
   display: flex;
-  height: 150px;
-  width: 150px;
-  padding: 50%;
+  height: 125px;
+  width: 125px;
   justify-content: center;
   align-items: center;
   background-color: rgb(127, 253, 253);
-  border-radius: 10px;
+  border-radius: 30px;
+}
+
+.imagen-element {
+  height: 125px;
+  width: 125px;
 }

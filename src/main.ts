@@ -1,5 +1,7 @@
 import { imagenes } from "./datos";
-const carta_element = document.getElementById("carta-element");
+const carta_1_element = document.getElementById("carta-element-1"); 
+const carta_2_element = document.getElementById("carta-element-2"); 
+
 let lista_mezclada: string[] = [];
 
 const mezcla_y_devuelve_array = (lista:string[]) => {
@@ -21,20 +23,34 @@ const mezcla_y_devuelve_array = (lista:string[]) => {
     return lista_mezclada;
 }
 
-const gira_carta = (lista: string[]): void => {    
-    // Crea el elemento imagen-carta
-    // const carta_element = document.getElementById("carta-element");
-    const imagen_element = document.getElementById("imagen-element");
-    
+const gira_carta = (carta: number): void => {    
     // Genera la imagen
-    imagen_element?.setAttribute("src", lista[0]);
-    // imagen_element?.setAttribute("class", "imagen-carta");
-    // imagen_element?.setAttribute("id", "imagen-carta");
+    console.log("Cargando fotos", carta);
+    const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
+    const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
+    
+    if (carta) {
+        switch(carta) {
+            case 0: {
+                imagen_carta_1_element?.setAttribute("src", lista_mezclada[carta]);
+                break;
+            }
+            case 1: {
+                imagen_carta_2_element?.setAttribute("src", lista_mezclada[carta]);
+                break;
+            }
+            default: {
+                console.log("Ha ocurrido un error con el número de carta");
+                break;
+            }
+        }
+    } else {
+        console.log(`Ha ocurrido un error con el elemento imagen-carta-element ${carta}`);
+    }
 };
 
-
+// Gestiona el click en las cartas
+carta_1_element?.addEventListener("click", () => gira_carta(0));
+carta_2_element?.addEventListener("click", () => gira_carta(1));
 
 mezcla_y_devuelve_array(imagenes);
-
-// Gestiona el click en las cartas
-carta_element?.addEventListener("click", () => gira_carta(lista_mezclada));

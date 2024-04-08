@@ -1,4 +1,4 @@
-import { imagenes } from "../datos";
+import { imagenes } from "../src/datos";
 
 const mezcla_y_devuelve_array = (lista:string[]) => {
     let indice_actual =  lista.length;

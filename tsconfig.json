@@ -15,5 +15,5 @@
     "noImplicitReturns": true,
     "skipLibCheck": true
   },
-  "include": ["src", "../Apuntes"]
+  "include": ["src", "../Apuntes", "Prueba de concepto 2 - Mostrar imagen y volver la carta", "Prueba de concepto 1 - barajar las cartas"]
 }

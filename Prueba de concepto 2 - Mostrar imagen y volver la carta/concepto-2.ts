@@ -1,4 +1,4 @@
-import { imagenes } from "../datos";
+import { imagenes } from "./datos";
 const carta_element = document.getElementById("carta-element");
 let lista_mezclada: string[] = [];
 
@@ -32,9 +32,8 @@ const gira_carta = (lista: string[]): void => {
     // imagen_element?.setAttribute("id", "imagen-carta");
 };
 
+// Gestiona el click en las cartas
+carta_element?.addEventListener("click", () => gira_carta(lista_mezclada));
 
 
 mezcla_y_devuelve_array(imagenes);
-
-// Gestiona el click en las cartas
-carta_element?.addEventListener("click", () => gira_carta(lista_mezclada));
