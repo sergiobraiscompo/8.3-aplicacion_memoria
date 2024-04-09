@@ -1,42 +1,38 @@
 import { imagenes } from "./datos";
+
 const carta_1_element = document.getElementById("carta-element-1"); 
 const carta_2_element = document.getElementById("carta-element-2"); 
 
-let lista_mezclada: string[] = [];
-
 const mezcla_y_devuelve_array = (lista:string[]) => {
-    let current_index =  lista.length;
-
-    // Mientras queden elementos a mezclar
-    while (current_index != 0) {
-        // Coge un elemento restante
-        let random_index = Math.floor(Math.random() * current_index);
-        current_index--;
     
-        // Mezcla la lista con el elemento aleatorio
-        [lista[current_index], lista[random_index]] = 
-        [lista[random_index], lista[current_index]];
+    // Mientras queden elementos a mezclar
+    let current_index = lista.length;
 
-        lista_mezclada.push(lista[current_index]);
+    while (current_index !=0) {
+            // Coge un elemento restante
+            let random_index = Math.floor(Math.random() * current_index);
+            current_index--;
+            
+            // Mezcla la lista con el elemento aleatorio
+            [lista[current_index], lista[random_index]] = 
+            [lista[random_index], lista[current_index]];
     }
-
-    return lista_mezclada;
-}
+};
 
 const gira_carta = (carta: number): void => {    
     // Genera la imagen
-    console.log("Cargando fotos", carta);
     const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
     const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
     
+    // Recibe el número de carta y cambia el src de la imagen
     if (carta) {
         switch(carta) {
-            case 0: {
-                imagen_carta_1_element?.setAttribute("src", lista_mezclada[carta]);
+            case 1: {
+                imagen_carta_1_element?.setAttribute("src", imagenes[carta]);
                 break;
             }
-            case 1: {
-                imagen_carta_2_element?.setAttribute("src", lista_mezclada[carta]);
+            case 2: {
+                imagen_carta_2_element?.setAttribute("src", imagenes[carta]);
                 break;
             }
             default: {
@@ -50,7 +46,7 @@ const gira_carta = (carta: number): void => {
 };
 
 // Gestiona el click en las cartas
-carta_1_element?.addEventListener("click", () => gira_carta(0));
-carta_2_element?.addEventListener("click", () => gira_carta(1));
+carta_1_element?.addEventListener("click", () => gira_carta(1));
+carta_2_element?.addEventListener("click", () => gira_carta(2));
 
 mezcla_y_devuelve_array(imagenes);

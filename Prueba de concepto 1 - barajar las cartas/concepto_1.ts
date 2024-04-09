@@ -1,23 +1,19 @@
 import { imagenes } from "../src/datos";
 
 const mezcla_y_devuelve_array = (lista:string[]) => {
-    let indice_actual =  lista.length;
-    let lista_mezclada = []
-
-    // Mientras queden elementos a mezclar
-    while (indice_actual != 0) {
-        // Coge un elemento restante
-        let indice_aleatorio = Math.floor(Math.random() * indice_actual);
-        indice_actual--;
     
-        // Mezcla la lista con el elemento aleatorio
-        [lista[indice_actual], lista[indice_aleatorio]] = 
-        [lista[indice_aleatorio], lista[indice_actual]];
+    // Mientras queden elementos a mezclar
+    let current_index = lista.length;
 
-        lista_mezclada.push(lista[indice_actual]);
+    while (current_index !=0) {
+            // Coge un elemento restante
+            let random_index = Math.floor(Math.random() * current_index);
+            current_index--;
+            
+            // Mezcla la lista con el elemento aleatorio
+            [lista[current_index], lista[random_index]] = 
+            [lista[random_index], lista[current_index]];
     }
-
-    return lista_mezclada;
 }
 
 console.log(mezcla_y_devuelve_array(imagenes));
