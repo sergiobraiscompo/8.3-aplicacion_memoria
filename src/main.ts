@@ -1,5 +1,5 @@
-import { InfoCarta, imagenes } from "./datos";
 
+// Contenedor de imágenes cartas
 const carta_1_element = document.getElementById("carta-element-1"); 
 const carta_2_element = document.getElementById("carta-element-2"); 
 const carta_3_element = document.getElementById("carta-element-3"); 
@@ -11,7 +11,23 @@ const carta_8_element = document.getElementById("carta-element-8");
 const carta_9_element = document.getElementById("carta-element-9"); 
 const carta_10_element = document.getElementById("carta-element-10"); 
 const carta_11_element = document.getElementById("carta-element-11"); 
-const carta_12_element = document.getElementById("carta-element-12"); 
+const carta_12_element = document.getElementById("carta-element-12");
+
+// Elementos imágenes HTML
+const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
+const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
+const imagen_carta_3_element = document.getElementById("imagen-carta-element-3");
+const imagen_carta_4_element = document.getElementById("imagen-carta-element-4");
+const imagen_carta_5_element = document.getElementById("imagen-carta-element-5");
+const imagen_carta_6_element = document.getElementById("imagen-carta-element-6");
+const imagen_carta_7_element = document.getElementById("imagen-carta-element-7");
+const imagen_carta_8_element = document.getElementById("imagen-carta-element-8");
+const imagen_carta_9_element = document.getElementById("imagen-carta-element-9");
+const imagen_carta_10_element = document.getElementById("imagen-carta-element-10");
+const imagen_carta_11_element = document.getElementById("imagen-carta-element-11");
+const imagen_carta_12_element = document.getElementById("imagen-carta-element-12");
+
+
 
 const mezcla_y_devuelve_array = (lista: InfoCarta[]) => {
     // Mientras queden elementos a mezclar
@@ -28,70 +44,56 @@ const mezcla_y_devuelve_array = (lista: InfoCarta[]) => {
     }
 };
 
-const gira_carta = (carta: number): void => {    
-    // Genera la imagen
-    const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
-    const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
-    const imagen_carta_3_element = document.getElementById("imagen-carta-element-3");
-    const imagen_carta_4_element = document.getElementById("imagen-carta-element-4");
-    const imagen_carta_5_element = document.getElementById("imagen-carta-element-5");
-    const imagen_carta_6_element = document.getElementById("imagen-carta-element-6");
-    const imagen_carta_7_element = document.getElementById("imagen-carta-element-7");
-    const imagen_carta_8_element = document.getElementById("imagen-carta-element-8");
-    const imagen_carta_9_element = document.getElementById("imagen-carta-element-9");
-    const imagen_carta_10_element = document.getElementById("imagen-carta-element-10");
-    const imagen_carta_11_element = document.getElementById("imagen-carta-element-11");
-    const imagen_carta_12_element = document.getElementById("imagen-carta-element-12");
-    
+const gira_carta = (idCarta: number): void => {    
     // Recibe el número de carta y cambia el src de la imagen
-    if (carta) {
-        switch(carta) {
+    if (idCarta) {
+        switch(idCarta) {
             case 1: {
-                imagen_carta_1_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_1_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 2: {
-                imagen_carta_2_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_2_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 3: {
-                imagen_carta_3_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_3_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 4: {
-                imagen_carta_4_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_4_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 5: {
-                imagen_carta_5_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_5_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 6: {
-                imagen_carta_6_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_6_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 7: {
-                imagen_carta_7_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_7_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 8: {
-                imagen_carta_8_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_8_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 9: {
-                imagen_carta_9_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_9_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 10: {
-                imagen_carta_10_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_10_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 11: {
-                imagen_carta_11_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_11_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             case 12: {
-                imagen_carta_12_element?.setAttribute("src", imagenes[carta].imagen);
+                imagen_carta_12_element?.setAttribute("src", imagenes[idCarta].imagen);
                 break;
             }
             default: {
@@ -100,7 +102,7 @@ const gira_carta = (carta: number): void => {
             }
         }
     } else {
-        console.log(`Ha ocurrido un error con el elemento imagen-carta-element ${carta}`);
+        console.log(`Ha ocurrido un error con el elemento imagen-carta-element ${idCarta}`);
     }
 };
 
