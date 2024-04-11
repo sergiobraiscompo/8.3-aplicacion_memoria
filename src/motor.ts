@@ -2,55 +2,159 @@
 En el motor nos va a hacer falta un método para barajar cartas
 */
 
+import { infoCartas } from "./constantes";
+import { Carta, Tablero } from "./model";
+
 
 const barajarCartas = (cartas : Carta[]): Carta[] => {
-    //...
-    cartas.
-  }
+    // Mientras queden elementos a mezclar
+    let current_index = cartas.length;
+
+    while (current_index !=0) {
+            // Coge un elemento restante
+            let random_index = Math.floor(Math.random() * current_index);
+            current_index--;
+            
+            // Mezcla la lista con el elemento aleatorio
+            [cartas[current_index], cartas[random_index]] = 
+            [cartas[random_index], cartas[current_index]];
+    }
+
+    return cartas;
+}
   
-  /*
-    Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
-  */
-  const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
-    //..
+/*
+  Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
+*/
+const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
+  // Variable que almacena si la carta es volteable
+  let cartaVolteable = false;
+
+  // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
+  if (tablero.estadoPartida === "CeroCartasLevantadas" || tablero.estadoPartida === "UnaCartaLevantada") {
+    if(indice === tablero.indiceCartaVolteadaA || indice === tablero.indiceCartaVolteadaB) {
+      cartaVolteable = true;
+    }
   }
+
+  return cartaVolteable;
+}
   
-  const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
-    //...
+const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
+  const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
+  const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
+  const imagen_carta_3_element = document.getElementById("imagen-carta-element-3");
+  const imagen_carta_4_element = document.getElementById("imagen-carta-element-4");
+  const imagen_carta_5_element = document.getElementById("imagen-carta-element-5");
+  const imagen_carta_6_element = document.getElementById("imagen-carta-element-6");
+  const imagen_carta_7_element = document.getElementById("imagen-carta-element-7");
+  const imagen_carta_8_element = document.getElementById("imagen-carta-element-8");
+  const imagen_carta_9_element = document.getElementById("imagen-carta-element-9");
+  const imagen_carta_10_element = document.getElementById("imagen-carta-element-10");
+  const imagen_carta_11_element = document.getElementById("imagen-carta-element-11");
+  const imagen_carta_12_element = document.getElementById("imagen-carta-element-12");
+
+  // Recibe el número de carta y cambia el src de la imagen
+  if (sePuedeVoltearLaCarta(tablero, indice)) {
+      switch(indice) {
+        case 1: {
+          imagen_carta_1_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 2: {
+          imagen_carta_2_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 3: {
+          imagen_carta_3_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 4: {
+          imagen_carta_4_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 5: {
+          imagen_carta_5_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 6: {
+          imagen_carta_6_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 7: {
+          imagen_carta_7_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 8: {
+          imagen_carta_8_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 9: {
+          imagen_carta_9_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 10: {
+          imagen_carta_10_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 11: {
+          imagen_carta_11_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        case 12: {
+          imagen_carta_12_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          break;
+        }
+        default: {
+          console.log("Ha ocurrido un error con el número de carta");
+          break;
+        }
+      }
+  } else {
+      console.log(`Ha ocurrido un error con al cargar el elemento imagen-carta-element ${indice}`);
   }
+}
   
   /*
     Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
   */
   export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
-    //...
+    // Variable que almacena si el id de ambas fotos coinciden
+    let ambasSonPareja: boolean = false;
+
+    // Comprueba si las dos cartas volteadas son pareja
+    if (tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto) {
+      ambasSonPareja = true;
+    }
+
+    return ambasSonPareja;
   }
   
-  /*
-    Aquí asumimos ya que son pareja, lo que hacemos es marcarlas como encontradas y comprobar si la partida esta completa.
-  */
-  const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : void => {
-    //...
-  }
-  
-  /*
-    Aquí asumimos que no son pareja y las volvemos a poner boca abajo
-  */
-  const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
-    // ...
-  }
-  
-  /*
-    Esto lo podemos comprobar o bien utilizando every, o bien utilizando un contador (cartasEncontradas)
-  */
-  export const esPartidaCompleta(tablero: Tablero) : boolean => {
-    //...
-  }
-  
-  /*
-  Iniciar partida
-  */
-  
-  export const iniciaPartida = (tablero: Tablero): void => {
-    //...
-  };
+/*
+  Aquí asumimos ya que son pareja, lo que hacemos es marcarlas como encontradas y comprobar si la partida esta completa.
+*/
+const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : void => {
+  // 
+}
+
+/*
+  Aquí asumimos que no son pareja y las volvemos a poner boca abajo
+*/
+const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
+  // ...
+}
+
+/*
+  Esto lo podemos comprobar o bien utilizando every, o bien utilizando un contador (cartasEncontradas)
+*/
+export const esPartidaCompleta(tablero: Tablero) : boolean => {
+  //...
+}
+
+/*
+Iniciar partida
+*/
+
+export const iniciaPartida = (tablero: Tablero): void => {
+  //...
+};
