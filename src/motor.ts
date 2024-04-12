@@ -6,6 +6,7 @@ import { infoCartas } from "./constantes";
 import { Carta, Tablero } from "./model";
 
 
+
 const barajarCartas = (cartas : Carta[]): Carta[] => {
     // Mientras queden elementos a mezclar
     let current_index = cartas.length;
@@ -39,7 +40,8 @@ const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
 
   return cartaVolteable;
 }
-  
+
+// Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
   const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
   const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
@@ -59,50 +61,62 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
       switch(indice) {
         case 1: {
           imagen_carta_1_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 2: {
           imagen_carta_2_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 3: {
           imagen_carta_3_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 4: {
           imagen_carta_4_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 5: {
           imagen_carta_5_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 6: {
           imagen_carta_6_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 7: {
           imagen_carta_7_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 8: {
           imagen_carta_8_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 9: {
           imagen_carta_9_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 10: {
           imagen_carta_10_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 11: {
           imagen_carta_11_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         case 12: {
           imagen_carta_12_element?.setAttribute("src", tablero.cartas[indice].imagen);
+          tablero.cartas[indice].estaVuelta = true;
           break;
         }
         default: {
@@ -115,40 +129,65 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
   }
 }
   
-  /*
-    Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
-  */
-  export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
-    // Variable que almacena si el id de ambas fotos coinciden
-    let ambasSonPareja: boolean = false;
+/*
+  Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
+*/
+export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
+  // Variable que almacena si el id de ambas fotos coinciden
+  let ambasSonPareja: boolean = false;
 
-    // Comprueba si las dos cartas volteadas son pareja
-    if (tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto) {
-      ambasSonPareja = true;
-    }
-
-    return ambasSonPareja;
+  // Comprueba si las dos cartas volteadas son pareja
+  if (tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto) {
+    ambasSonPareja = true;
   }
+
+  return ambasSonPareja;
+}
   
 /*
   Aquí asumimos ya que son pareja, lo que hacemos es marcarlas como encontradas y comprobar si la partida esta completa.
 */
 const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : void => {
-  // 
+  // Comprueba si las cartas son pareja
+  // En caso de serlo inicia esPartidaCompleta
+  if (sonPareja(indiceA, indiceB, tablero)) {
+    tablero.cartas[indiceA].encontrada = true;
+    tablero.cartas[indiceB].encontrada = true;
+    esPartidaCompleta(tablero);    
+  }
 }
 
 /*
   Aquí asumimos que no son pareja y las volvemos a poner boca abajo
 */
 const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
-  // ...
+  // Comprueba si las cartas son pareja
+  // En caso de serlo inicia esPartidaCompleta
+  if (!sonPareja(indiceA, indiceB, tablero)) {
+    tablero.cartas[indiceA].encontrada = true;
+    tablero.cartas[indiceB].encontrada = true;
+    esPartidaCompleta(tablero);
+  }
 }
 
 /*
   Esto lo podemos comprobar o bien utilizando every, o bien utilizando un contador (cartasEncontradas)
 */
-export const esPartidaCompleta(tablero: Tablero) : boolean => {
-  //...
+export const esPartidaCompleta = (tablero: Tablero): boolean => {
+  // Almacena el estado de la partida en local
+  let partidaGanada = true;
+
+  // Comprueba si se han encontrado todas las parejas
+  tablero.cartas.every((carta) => {
+    if(!carta.encontrada) {
+      partidaGanada = false;
+      tablero.estadoPartida = "DosCartasLevantadas";
+    } else {
+      tablero.estadoPartida = "PartidaCompleta";
+    }
+  })
+
+  return partidaGanada;
 }
 
 /*
@@ -156,5 +195,16 @@ Iniciar partida
 */
 
 export const iniciaPartida = (tablero: Tablero): void => {
-  //...
+  // Almacenta el estado de la partida
+  let estadoPartida: string = tablero.estadoPartida;
+
+  // Cambia el estado de la partida
+  if(estadoPartida === "PartidaNoIniciada") {
+    // Cambia el estado 
+    tablero.cartas.every((carta) => {
+      carta
+    })
+    estadoPartida = "CeroCartasLevantadas";
+
+  }
 };
