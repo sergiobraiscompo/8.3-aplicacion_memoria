@@ -3,7 +3,7 @@ En el motor nos va a hacer falta un método para barajar cartas
 */
 
 import { infoCartas } from "./constantes";
-import { Carta, Tablero } from "./model";
+import { Carta, Tablero, cartas } from "./model";
 
 
 
@@ -60,63 +60,63 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
   if (sePuedeVoltearLaCarta(tablero, indice)) {
       switch(indice) {
         case 1: {
-          imagen_carta_1_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_1_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 2: {
-          imagen_carta_2_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_2_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 3: {
-          imagen_carta_3_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_3_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 4: {
-          imagen_carta_4_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_4_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 5: {
-          imagen_carta_5_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_5_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 6: {
-          imagen_carta_6_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_6_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 7: {
-          imagen_carta_7_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_7_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 8: {
-          imagen_carta_8_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_8_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 9: {
-          imagen_carta_9_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_9_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 10: {
-          imagen_carta_10_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_10_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 11: {
-          imagen_carta_11_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_11_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         case 12: {
-          imagen_carta_12_element?.setAttribute("src", tablero.cartas[indice].imagen);
-          tablero.cartas[indice].estaVuelta = true;
+          imagen_carta_12_element?.setAttribute("src", cartas[indice].imagen);
+          cartas[indice].estaVuelta = true;
           break;
         }
         default: {
@@ -137,7 +137,7 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): b
   let ambasSonPareja: boolean = false;
 
   // Comprueba si las dos cartas volteadas son pareja
-  if (tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto) {
+  if (cartas[indiceA].idFoto === cartas[indiceB].idFoto) {
     ambasSonPareja = true;
   }
 
@@ -151,8 +151,8 @@ const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : 
   // Comprueba si las cartas son pareja
   // En caso de serlo inicia esPartidaCompleta
   if (sonPareja(indiceA, indiceB, tablero)) {
-    tablero.cartas[indiceA].encontrada = true;
-    tablero.cartas[indiceB].encontrada = true;
+    cartas[indiceA].encontrada = true;
+    cartas[indiceB].encontrada = true;
     esPartidaCompleta(tablero);    
   }
 }
@@ -162,12 +162,10 @@ const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : 
 */
 const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
   // Comprueba si las cartas son pareja
-  // En caso de serlo inicia esPartidaCompleta
-  if (!sonPareja(indiceA, indiceB, tablero)) {
-    tablero.cartas[indiceA].encontrada = true;
-    tablero.cartas[indiceB].encontrada = true;
-    esPartidaCompleta(tablero);
-  }
+  // En caso de no serlo voltea las cartas
+  let cartasNoPareja :number[] = [indiceA, indiceB];
+
+  cartasNoPareja.every((carta => {voltearLaCarta(tablero, carta);}))
 }
 
 /*
@@ -178,7 +176,7 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
   let partidaGanada = true;
 
   // Comprueba si se han encontrado todas las parejas
-  tablero.cartas.every((carta) => {
+  cartas.every((carta) => {
     if(!carta.encontrada) {
       partidaGanada = false;
       tablero.estadoPartida = "DosCartasLevantadas";
@@ -198,13 +196,9 @@ export const iniciaPartida = (tablero: Tablero): void => {
   // Almacenta el estado de la partida
   let estadoPartida: string = tablero.estadoPartida;
 
-  // Cambia el estado de la partida
+  // Cambia el estado de la partida y la prepara
   if(estadoPartida === "PartidaNoIniciada") {
-    // Cambia el estado 
-    tablero.cartas.every((carta) => {
-      carta
-    })
+    barajarCartas(cartas);
     estadoPartida = "CeroCartasLevantadas";
-
   }
 };
