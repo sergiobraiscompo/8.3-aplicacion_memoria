@@ -139,6 +139,10 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): b
   // Comprueba si las dos cartas volteadas son pareja
   if (cartas[indiceA].idFoto === cartas[indiceB].idFoto) {
     ambasSonPareja = true;
+    parejaEncontrada(tablero, indiceA, indiceB);
+  } else {
+    ambasSonPareja = false;
+    parejaNoEncontrada(tablero, indiceA, indiceB);
   }
 
   return ambasSonPareja;
@@ -150,11 +154,9 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): b
 const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : void => {
   // Comprueba si las cartas son pareja
   // En caso de serlo inicia esPartidaCompleta
-  if (sonPareja(indiceA, indiceB, tablero)) {
     cartas[indiceA].encontrada = true;
     cartas[indiceB].encontrada = true;
-    esPartidaCompleta(tablero);    
-  }
+    esPartidaCompleta(tablero);
 }
 
 /*
@@ -163,7 +165,7 @@ const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : 
 const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
   // Comprueba si las cartas son pareja
   // En caso de no serlo voltea las cartas
-  let cartasNoPareja :number[] = [indiceA, indiceB];
+  let cartasNoPareja: number[] = [indiceA, indiceB];
 
   cartasNoPareja.every((carta => {voltearLaCarta(tablero, carta);}))
 }
