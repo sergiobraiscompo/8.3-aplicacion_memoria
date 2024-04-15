@@ -1,27 +1,20 @@
 import { Tablero, tablero } from "./model";
-import { sonPareja, esPartidaCompleta, iniciaPartida } from "./motor";
+import { iniciaPartida, sonPareja } from "./motor";
 
 // sonPareja
 describe("sonPareja", () => {
     it('Debería devolver false', () => {
         // Arrange
-        const indiceA: number = 2;
-        const indiceB: number = 3;
+        const indiceA: number = 0;
+        const indiceB: number = 1;
         const tableroPartida: Tablero = tablero;
 
         // Act
+        iniciaPartida(tableroPartida);
         const llamaFuncion: boolean = sonPareja(indiceA, indiceB, tableroPartida);
-
-        //Assert
-        expect(llamaFuncion).toBe(false);
-    })
-
-    it('Debería devolver true', () => {
-        // Arrange
         
-        // Act
-
         //Assert
+        expect(llamaFuncion).toEqual(false);
     })
 });
 

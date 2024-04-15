@@ -1,3 +1,6 @@
+import { infoCartas } from "./constantes";
+import { InfoCarta, tablero } from "./model";
+import { iniciaPartida } from "./motor";
 
 // Contenedor de imágenes cartas
 const carta_1_element = document.getElementById("carta-element-1"); 
@@ -49,51 +52,51 @@ const gira_carta = (idCarta: number): void => {
     if (idCarta) {
         switch(idCarta) {
             case 1: {
-                imagen_carta_1_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_1_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 2: {
-                imagen_carta_2_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_2_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 3: {
-                imagen_carta_3_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_3_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 4: {
-                imagen_carta_4_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_4_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 5: {
-                imagen_carta_5_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_5_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 6: {
-                imagen_carta_6_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_6_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 7: {
-                imagen_carta_7_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_7_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 8: {
-                imagen_carta_8_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_8_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 9: {
-                imagen_carta_9_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_9_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 10: {
-                imagen_carta_10_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_10_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 11: {
-                imagen_carta_11_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_11_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             case 12: {
-                imagen_carta_12_element?.setAttribute("src", imagenes[idCarta].imagen);
+                imagen_carta_12_element?.setAttribute("src", infoCartas[idCarta].imagen);
                 break;
             }
             default: {
@@ -120,4 +123,7 @@ carta_10_element?.addEventListener("click", () => gira_carta(10));
 carta_11_element?.addEventListener("click", () => gira_carta(11));
 carta_12_element?.addEventListener("click", () => gira_carta(12));
 
-mezcla_y_devuelve_array(imagenes);
+mezcla_y_devuelve_array(infoCartas);
+console.log(tablero);
+iniciaPartida(tablero);
+console.log(tablero);
