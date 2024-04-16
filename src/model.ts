@@ -27,22 +27,12 @@ const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
     let coleccion_inicial_cartas: Carta[] = [];
     let contador = 0;
 
-    // infoCartas.every((carta) => {
-    //     coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
-    //     coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
-    //     contador += 1;
-    // })
     while (contador < infoCartas.length){
         const carta = infoCartas[contador];
         coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
         contador += 1;
-        console.log(contador);
-        coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
-        contador += 1;
-        console.log(contador);
     }
-
-    console.log("cartas generadas =", contador);
+    
     return coleccion_inicial_cartas;
 };
 

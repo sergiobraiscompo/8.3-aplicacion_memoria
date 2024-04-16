@@ -2,7 +2,6 @@
 En el motor nos va a hacer falta un método para barajar cartas
 */
 
-// import { infoCartas } from "./constantes";
 import { infoCartas } from "./constantes";
 import { Carta, Tablero, cartas, tablero } from "./model";
 
@@ -13,13 +12,13 @@ const barajarCartas = (cartas : Carta[]): Carta[] => {
     let current_index = cartas.length;
 
     while (current_index !=0) {
-            // Coge un elemento restante
-            let random_index = Math.floor(Math.random() * current_index);
-            current_index--;
-            
-            // Mezcla la lista con el elemento aleatorio
-            [tablero.cartas[current_index], tablero.cartas[random_index]] = 
-            [tablero.cartas[random_index], tablero.cartas[current_index]];
+      // Coge un elemento restante
+      let random_index = Math.floor(Math.random() * current_index);
+      current_index--;
+      
+      // Mezcla la lista con el elemento aleatorio
+      [tablero.cartas[current_index], tablero.cartas[random_index]] = 
+      [tablero.cartas[random_index], tablero.cartas[current_index]];
     }
 
     return cartas;
@@ -45,89 +44,75 @@ const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
 
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
-  const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
-  const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
-  const imagen_carta_3_element = document.getElementById("imagen-carta-element-3");
-  const imagen_carta_4_element = document.getElementById("imagen-carta-element-4");
-  const imagen_carta_5_element = document.getElementById("imagen-carta-element-5");
-  const imagen_carta_6_element = document.getElementById("imagen-carta-element-6");
-  const imagen_carta_7_element = document.getElementById("imagen-carta-element-7");
-  const imagen_carta_8_element = document.getElementById("imagen-carta-element-8");
-  const imagen_carta_9_element = document.getElementById("imagen-carta-element-9");
-  const imagen_carta_10_element = document.getElementById("imagen-carta-element-10");
-  const imagen_carta_11_element = document.getElementById("imagen-carta-element-11");
-  const imagen_carta_12_element = document.getElementById("imagen-carta-element-12");
 
   // Recibe el número de carta y cambia el src de la imagen
   if (sePuedeVoltearLaCarta(tablero, indice)) {
-      switch(indice) {
-        case 1: {
-          imagen_carta_1_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 2: {
-          imagen_carta_2_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 3: {
-          imagen_carta_3_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 4: {
-          imagen_carta_4_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 5: {
-          imagen_carta_5_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 6: {
-          imagen_carta_6_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 7: {
-          imagen_carta_7_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 8: {
-          imagen_carta_8_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 9: {
-          imagen_carta_9_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 10: {
-          imagen_carta_10_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 11: {
-          imagen_carta_11_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        case 12: {
-          imagen_carta_12_element?.setAttribute("src", cartas[indice].imagen);
-          cartas[indice].estaVuelta = true;
-          break;
-        }
-        default: {
-          console.log("Ha ocurrido un error con el número de carta");
-          break;
-        }
+    switch(indice) {
+      case 1: {
+        document.getElementById("imagen-carta-element-1")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
       }
-  } else {
-      console.log(`Ha ocurrido un error con al cargar el elemento imagen-carta-element ${indice}`);
+      case 2: {
+        document.getElementById("imagen-carta-element-2")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 3: {
+        document.getElementById("imagen-carta-element-3")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 4: {
+        document.getElementById("imagen-carta-element-4")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 5: {
+        document.getElementById("imagen-carta-element-5")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 6: {
+        document.getElementById("imagen-carta-element-6")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 7: {
+        document.getElementById("imagen-carta-element-7")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 8: {
+        document.getElementById("imagen-carta-element-8")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 9: {
+        document.getElementById("imagen-carta-element-9")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 10: {
+        document.getElementById("imagen-carta-element-10")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 11: {
+        document.getElementById("imagen-carta-element-11")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      case 12: {
+        document.getElementById("imagen-carta-element-12")?.setAttribute("src", cartas[indice].imagen);
+        cartas[indice].estaVuelta = true;
+        break;
+      }
+      default: {
+        console.log(`Ha ocurrido un error con al cargar el elemento imagen-carta-element ${indice}`);
+        break;
+      }
+    }
   }
 };
   
@@ -177,17 +162,19 @@ const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number)
 */
 export const esPartidaCompleta = (tablero: Tablero): boolean => {
   // Almacena el estado de la partida en local
-  let partidaGanada = true;
+  let partidaGanada: boolean = false;
 
   // Comprueba si se han encontrado todas las parejas
-  cartas.every((carta) => {
-    if(!carta.encontrada) {
-      partidaGanada = false;
-      tablero.estadoPartida = "DosCartasLevantadas";
-    } else {
+  tablero.cartas.every((carta) => {
+    if(carta.encontrada) {
+      partidaGanada = true;
       tablero.estadoPartida = "PartidaCompleta";
+    } else {
+      tablero.estadoPartida = "DosCartasLevantadas";
     }
   })
+
+  console.log("Partida ganada:",partidaGanada);
 
   return partidaGanada;
 };
