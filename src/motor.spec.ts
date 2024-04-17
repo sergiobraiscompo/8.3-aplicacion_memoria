@@ -1,5 +1,21 @@
-import { Tablero, Carta, tablero } from "./model";
-import { esPartidaCompleta, iniciaPartida, sonPareja,  } from "./motor";
+import { Tablero, Carta, tablero, InfoCarta, cartas } from "./model";
+import { esPartidaCompleta, iniciaPartida, sonPareja } from "./motor";
+
+
+
+// iniciarPartida
+describe("iniciaPartida", () => {
+    it('Llama a barajar cartas y cambia el estado de la partida a "CeroCartasLevantadas" ', () => {
+        // Arrange
+        const estadoEsperado: string = "CeroCartasLevantadas";
+
+        // Act
+        iniciaPartida(tablero);
+
+        //Assert
+        expect(tablero.estadoPartida).toBe(estadoEsperado);
+    })
+});
 
 // sonPareja
 describe("sonPareja", () => {
@@ -7,11 +23,10 @@ describe("sonPareja", () => {
         // Arrange
         const indiceA: number = 0;
         const indiceB: number = 0;
-        const tableroPartida: Tablero = tablero;
 
         // Act
-        iniciaPartida(tableroPartida);
-        const llamaFuncion: boolean = sonPareja(indiceA, indiceB, tableroPartida);
+        iniciaPartida(tablero);
+        const llamaFuncion: boolean = sonPareja(indiceA, indiceB, tablero);
 
         //Assert
         expect(llamaFuncion).toEqual(true);
@@ -21,11 +36,10 @@ describe("sonPareja", () => {
         // Arrange
         const indiceA: number = 9;
         const indiceB: number = 11;
-        const tableroPartida: Tablero = tablero;
+        const llamaFuncion: boolean = sonPareja(indiceA, indiceB, tablero);
 
         // Act
-        iniciaPartida(tableroPartida);
-        const llamaFuncion: boolean = sonPareja(indiceA, indiceB, tableroPartida);
+        iniciaPartida(tablero);
 
         //Assert
         expect(llamaFuncion).toEqual(false);
@@ -36,34 +50,34 @@ describe("sonPareja", () => {
 describe("esPartidaCompleta", () => {
     it('Debería devolver true si encontrada es true en todas las cartas', () => {
         // Arrange
-        const tableroPartida: Tablero = tablero;
-        
+        const llamaFuncion: boolean = (esPartidaCompleta(tablero));
+        const cambiaValorCartas = (): void => {
+            let contador = 1;
+
+            while(contador < tablero.cartas.length){
+                tablero.cartas[contador].encontrada = true;
+                contador += 1;
+            }
+        }
+
         // Act
-        const llamaFuncion: boolean = (esPartidaCompleta(tableroPartida));
-        tableroPartida.cartas.every((carta: Carta): void => {
-            carta.encontrada = true;
-        })
+        iniciaPartida(tablero);
+        cambiaValorCartas();
 
         //Assert
         expect(llamaFuncion).toEqual(true);
+        expect(tablero.estadoPartida).toBe("PartidaCompleta");
+    })
 
-        it('Debería devolver false si encontrada es false en todas o algunas de las cartas', () => {
-            // Arrange
-            const tableroPartida: Tablero = tablero;
-            
-            // Act
-            const llamaFuncion: boolean = (esPartidaCompleta(tableroPartida));
+    it('Debería devolver false si encontrada es fase en todas o algunas de las cartas', () => {
+        // Arrange
+        const llamaFuncion: boolean = (esPartidaCompleta(tablero));
 
-            //Assert
-            expect(llamaFuncion).toEqual(false);
-        })
+        // Act
+        iniciaPartida(tablero);
+        
+        //Assert
+        expect(llamaFuncion).toEqual(false);
+        expect(tablero.estadoPartida).toBe(!"PartidaCompleta");
     })
 });
-
-// // iniciaPartida
-// describe("iniciaPartida", () => {
-//     it('', () => {
-//         expect().toBe()
-//     })
-// });
-

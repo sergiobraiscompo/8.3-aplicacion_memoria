@@ -153,7 +153,6 @@ const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number)
   // Comprueba si las cartas son pareja
   // En caso de no serlo voltea las cartas
   let cartasNoPareja: number[] = [indiceA, indiceB];
-
   cartasNoPareja.every((carta => {voltearLaCarta(tablero, carta);}))
 };
 
@@ -166,30 +165,22 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
 
   // Comprueba si se han encontrado todas las parejas
   tablero.cartas.every((carta) => {
-    if(carta.encontrada) {
-      partidaGanada = true;
-      tablero.estadoPartida = "PartidaCompleta";
-    } else {
+    console.log("carta", carta.idFoto, "encontrada", carta.encontrada)
+    if(!carta.encontrada) {
+      partidaGanada = false;
       tablero.estadoPartida = "DosCartasLevantadas";
+    } else {
+      tablero.estadoPartida = "PartidaCompleta";
     }
   })
-
-  console.log("Partida ganada:",partidaGanada);
 
   return partidaGanada;
 };
 
-/*
-Iniciar partida
-*/
-
 export const iniciaPartida = (tablero: Tablero): void => {
-  // Almacenta el estado de la partida
-  let estadoPartida: string = tablero.estadoPartida;
-
-  // Cambia el estado de la partida y la prepara
-  if(estadoPartida === "PartidaNoIniciada") {
+  if (tablero.estadoPartida === "PartidaNoIniciada") {
+    // Cambia el estado de la partida y la prepara
     barajarCartas(tablero.cartas);
-    estadoPartida = "CeroCartasLevantadas";
+    tablero.estadoPartida = "CeroCartasLevantadas";
   }
 };
