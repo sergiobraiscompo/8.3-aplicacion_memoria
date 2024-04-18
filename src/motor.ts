@@ -4,8 +4,7 @@ En el motor nos va a hacer falta un método para barajar cartas
 
 import { infoCartas } from "./constantes";
 import { Carta, Tablero, cartas, tablero } from "./model";
-
-
+import { mostrarCarta } from "./ui";
 
 const barajarCartas = (cartas : Carta[]): Carta[] => {
     // Mientras queden elementos a mezclar
@@ -33,7 +32,7 @@ const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
 
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
   if (tablero.estadoPartida === "CeroCartasLevantadas" || tablero.estadoPartida === "UnaCartaLevantada") {
-    if(indice === tablero.indiceCartaVolteadaA || indice === tablero.indiceCartaVolteadaB) {
+    if(indice != tablero.indiceCartaVolteadaA || indice != tablero.indiceCartaVolteadaB) {
       cartaVolteable = true;
       tablero.indiceCartaVolteadaA
     }
@@ -49,67 +48,67 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
   if (sePuedeVoltearLaCarta(tablero, indice)) {
     switch(indice) {
       case 1: {
-        document.getElementById("imagen-carta-element-1")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 2: {
-        document.getElementById("imagen-carta-element-2")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 3: {
-        document.getElementById("imagen-carta-element-3")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 4: {
-        document.getElementById("imagen-carta-element-4")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 5: {
-        document.getElementById("imagen-carta-element-5")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 6: {
-        document.getElementById("imagen-carta-element-6")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 7: {
-        document.getElementById("imagen-carta-element-7")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 8: {
-        document.getElementById("imagen-carta-element-8")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 9: {
-        document.getElementById("imagen-carta-element-9")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 10: {
-        document.getElementById("imagen-carta-element-10")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 11: {
-        document.getElementById("imagen-carta-element-11")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       case 12: {
-        document.getElementById("imagen-carta-element-12")?.setAttribute("src", cartas[indice].imagen);
+        mostrarCarta(indice)
         cartas[indice].estaVuelta = true;
         break;
       }
       default: {
-        console.log(`Ha ocurrido un error con al cargar el elemento imagen-carta-element ${indice}`);
+        console.log(`Ha ocurrido un error con al cargar el elemento ${indice}`);
         break;
       }
     }
@@ -183,6 +182,7 @@ return partidaGanada;
 };
 
 export const iniciaPartida = (tablero: Tablero): void => {
+  console.log("Iniciando partida.");
   if (tablero.estadoPartida === "PartidaNoIniciada") {
     // Cambia el estado de la partida y la prepara
     barajarCartas(tablero.cartas);
