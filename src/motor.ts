@@ -115,7 +115,7 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
     }
   }
 };
-  
+
 /*
   Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
 */
@@ -154,6 +154,7 @@ const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number)
   // En caso de no serlo voltea las cartas
   let cartasNoPareja: number[] = [indiceA, indiceB];
   cartasNoPareja.every((carta => {voltearLaCarta(tablero, carta);}))
+  tablero.estadoPartida = "CeroCartasLevantadas";
 };
 
 /*
@@ -162,19 +163,23 @@ const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number)
 export const esPartidaCompleta = (tablero: Tablero): boolean => {
   // Almacena el estado de la partida en local
   let partidaGanada: boolean = false;
+  let contador: number = 0;
 
   // Comprueba si se han encontrado todas las parejas
-  tablero.cartas.every((carta) => {
-    console.log("carta", carta.idFoto, "encontrada", carta.encontrada)
-    if(!carta.encontrada) {
-      partidaGanada = false;
-      tablero.estadoPartida = "DosCartasLevantadas";
-    } else {
+  while (contador < tablero.cartas.length) {
+    const estadoCarta = tablero.cartas[contador].encontrada;
+    if (estadoCarta) {
+      partidaGanada = true;
       tablero.estadoPartida = "PartidaCompleta";
+    } else {
+      partidaGanada = false;
+      tablero.estadoPartida = "CeroCartasLevantadas";
     }
-  })
 
-  return partidaGanada;
+  contador += 1;
+}
+
+return partidaGanada;
 };
 
 export const iniciaPartida = (tablero: Tablero): void => {
