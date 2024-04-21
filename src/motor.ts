@@ -26,16 +26,26 @@ const barajarCartas = (cartas : Carta[]): Carta[] => {
 /*
   Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
 */
-const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
+export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
   // Variable que almacena si la carta es volteable
-  let cartaVolteable = false;
+  let cartaVolteable: boolean = false;
+  let estadoPartida = tablero.estadoPartida;
 
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (tablero.estadoPartida === "CeroCartasLevantadas" || tablero.estadoPartida === "UnaCartaLevantada") {
-    if(indice != tablero.indiceCartaVolteadaA || indice != tablero.indiceCartaVolteadaB) {
-      cartaVolteable = true;
-      tablero.indiceCartaVolteadaA
-    }
+  if (estadoPartida === "UnaCartaLevantada") {
+    cartaVolteable = true;
+    tablero.indiceCartaVolteadaB = indice;
+    estadoPartida = "DosCartasLevantadas";
+  }
+
+  if (estadoPartida === "CeroCartasLevantadas") {
+    cartaVolteable = true;
+    tablero.indiceCartaVolteadaA = indice;
+    estadoPartida = "UnaCartaLevantada";
+  } 
+
+  if (estadoPartida === "DosCartasLevantadas" && tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB ) {
+    sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero);
   }
 
   return cartaVolteable;
@@ -48,62 +58,62 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
   if (sePuedeVoltearLaCarta(tablero, indice)) {
     switch(indice) {
       case 1: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 2: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 3: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 4: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 5: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 6: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 7: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 8: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 9: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 10: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 11: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
       case 12: {
-        mostrarCarta(indice)
+        mostrarCarta(indice);
         cartas[indice].estaVuelta = true;
         break;
       }
