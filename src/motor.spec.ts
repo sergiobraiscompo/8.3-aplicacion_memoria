@@ -1,8 +1,6 @@
 import { tablero } from "./model";
 import { esPartidaCompleta, iniciaPartida, sonPareja } from "./motor";
 
-
-
 // iniciarPartida
 describe("iniciaPartida", () => {
     it('Llama a barajar cartas y cambia el estado de la partida a "CeroCartasLevantadas" ', () => {

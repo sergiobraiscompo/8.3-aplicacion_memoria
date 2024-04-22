@@ -21,8 +21,8 @@ const barajarCartas = (cartas : Carta[]): Carta[] => {
     }
 
     return cartas;
-};
-  
+  };
+
 /*
   Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
 */
