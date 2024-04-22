@@ -6,7 +6,7 @@ import { sePuedeVoltearLaCarta } from "./motor";
 export const botonEmpezarPartida = document.getElementById("boton-empezar-partida");
 
 // Carta 1
-const elemento_carta_1 = document.getElementById("carta-element-1");
+export const elemento_carta_1 = document.getElementById("carta-element-1");
 elemento_carta_1?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 1));
 
 // Carta 2
