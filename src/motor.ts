@@ -3,26 +3,31 @@ En el motor nos va a hacer falta un método para barajar cartas
 */
 
 import { infoCartas } from "./constantes";
-import { Carta, Tablero, cartas, tablero } from "./model";
+import { Carta, Tablero, tablero } from "./model";
 import { mostrarCarta } from "./ui";
 
 const barajarCartas = (cartas : Carta[]): Carta[] => {
     // Mientras queden elementos a mezclar
     let current_index = cartas.length;
+    let contador = 0;
 
-    while (current_index !=0) {
+    while (contador < tablero.cartas.length) {
       // Coge un elemento restante
       let random_index = Math.floor(Math.random() * current_index);
       current_index--;
       
       // Mezcla la lista con el elemento aleatorio
-      [tablero.cartas[current_index], tablero.cartas[random_index]] = 
-      [tablero.cartas[random_index], tablero.cartas[current_index]];
+      [cartas[current_index], tablero.cartas[random_index]] = 
+      [tablero.cartas[random_index], cartas[current_index]];
+      contador += 1;
     }
-
+    
+    console.log("cartas actuales", tablero.cartas);
     return cartas;
   };
 
+  console.log("cartas iniciales", tablero.cartas);
+  
 /*
   Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
 */
@@ -32,22 +37,25 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
   let estadoPartida = tablero.estadoPartida;
 
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (estadoPartida === "UnaCartaLevantada") {
+  if (estadoPartida === "UnaCartaLevantada" && !tablero.cartas[indice].estaVuelta) {
     cartaVolteable = true;
     tablero.indiceCartaVolteadaB = indice;
+    voltearLaCarta(tablero, indice);
     estadoPartida = "DosCartasLevantadas";
   }
 
-  if (estadoPartida === "CeroCartasLevantadas") {
+  if (estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indice].estaVuelta) {
     cartaVolteable = true;
     tablero.indiceCartaVolteadaA = indice;
-    estadoPartida = "UnaCartaLevantada";
+    voltearLaCarta(tablero, indice);
+    tablero.estadoPartida = "UnaCartaLevantada";
   } 
 
   if (estadoPartida === "DosCartasLevantadas" && tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB ) {
     sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero);
   }
 
+  console.log("estado partida:", tablero.estadoPartida)
   return cartaVolteable;
 };
 
@@ -55,66 +63,66 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
 const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
 
   // Recibe el número de carta y cambia el src de la imagen
-  if (sePuedeVoltearLaCarta(tablero, indice)) {
+  if (indice) {
     switch(indice) {
       case 1: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 2: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 3: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 4: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 5: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 6: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 7: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 8: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 9: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 10: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 11: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       case 12: {
         mostrarCarta(indice);
-        cartas[indice].estaVuelta = true;
+        tablero.cartas[indice].estaVuelta = true;
         break;
       }
       default: {
@@ -197,5 +205,6 @@ export const iniciaPartida = (tablero: Tablero): void => {
     // Cambia el estado de la partida y la prepara
     barajarCartas(tablero.cartas);
     tablero.estadoPartida = "CeroCartasLevantadas";
+
   }
 };

@@ -54,86 +54,70 @@ const elemento_carta_12 = document.getElementById("carta-element-12");
 elemento_carta_12?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 12));
 
 
-export const mostrarCarta = (indice: number) => {
-    // Borrar
-    console.log("mostrarCarta")
-    console.log("cargando carta ", indice);
-    
-    // Almacenan las cartas en su elemento HTML
-    const imagen_1 = document.getElementById("imagen-carta-element-1")?.setAttribute("src", tablero.cartas[0].imagen);
-    const imagen_2 = document.getElementById("imagen-carta-element-2")?.setAttribute("src", tablero.cartas[1].imagen);
-    const imagen_3 = document.getElementById("imagen-carta-element-3")?.setAttribute("src", tablero.cartas[2].imagen);
-    const imagen_4 = document.getElementById("imagen-carta-element-4")?.setAttribute("src", tablero.cartas[3].imagen);
-    const imagen_5 = document.getElementById("imagen-carta-element-5")?.setAttribute("src", tablero.cartas[4].imagen);
-    const imagen_6 = document.getElementById("imagen-carta-element-6")?.setAttribute("src", tablero.cartas[5].imagen);
-    const imagen_7 = document.getElementById("imagen-carta-element-7")?.setAttribute("src", tablero.cartas[6].imagen);
-    const imagen_8 = document.getElementById("imagen-carta-element-8")?.setAttribute("src", tablero.cartas[7].imagen);
-    const imagen_9 = document.getElementById("imagen-carta-element-9")?.setAttribute("src", tablero.cartas[8].imagen);
-    const imagen_10 = document.getElementById("imagen-carta-element-10")?.setAttribute("src", tablero.cartas[9].imagen);
-    const imagen_11 = document.getElementById("imagen-carta-element-11")?.setAttribute("src", tablero.cartas[10].imagen);
-    const imagen_12 = document.getElementById("imagen-carta-element-12")?.setAttribute("src", tablero.cartas[11].imagen);
+// Almacenan las cartas en su elemento HTML
+const imagen_1 = document.getElementById("imagen-carta-element-1");
+const imagen_2 = document.getElementById("imagen-carta-element-2");
+const imagen_3 = document.getElementById("imagen-carta-element-3");
+const imagen_4 = document.getElementById("imagen-carta-element-4");
+const imagen_5 = document.getElementById("imagen-carta-element-5");
+const imagen_6 = document.getElementById("imagen-carta-element-6");
+const imagen_7 = document.getElementById("imagen-carta-element-7");
+const imagen_8 = document.getElementById("imagen-carta-element-8");
+const imagen_9 = document.getElementById("imagen-carta-element-9");
+const imagen_10 = document.getElementById("imagen-carta-element-10");
+const imagen_11 = document.getElementById("imagen-carta-element-11");
+const imagen_12 = document.getElementById("imagen-carta-element-12");
 
+export const mostrarCarta = (indice: number) => {
     // Carga la carta guardada en los elementos de imagen
     if (typeof(indice) === "number") {
         switch(indice) {
             case 1: {
-                console.log(imagen_1);
-                imagen_1;
+                imagen_1?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 2: {
-                console.log(imagen_2);
-                imagen_2;
+                imagen_2?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 3: {
-                console.log(imagen_3);
-                imagen_3;
+                imagen_3?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 4: {
-                console.log(imagen_4);
-                imagen_4;
+                imagen_4?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 5: {
-                console.log(imagen_5);
-                imagen_5;
+                imagen_5?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 6: {
-                console.log(imagen_6);
-                imagen_6;
+                imagen_6?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 7: {
-                console.log(imagen_7);
-                imagen_7;
+                imagen_7?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 8: {
-                console.log(imagen_8);
-                imagen_8;
+                imagen_8?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 9: {
-                console.log(imagen_9);
-                imagen_9;
+                imagen_9?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 10: {
-                console.log(imagen_10);
-                imagen_10;
+                imagen_10?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 11: {
-                console.log(imagen_11);
-                imagen_11;
+                imagen_11?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             case 12: {
-                console.log(imagen_12);
-                imagen_12;
+                imagen_12?.setAttribute("src", tablero.cartas[indice].imagen);
                 break;
             }
             default: {
