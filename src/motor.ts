@@ -22,11 +22,8 @@ const barajarCartas = (cartas : Carta[]): Carta[] => {
       contador += 1;
     }
     
-    console.log("cartas actuales", tablero.cartas);
     return cartas;
   };
-
-  console.log("cartas iniciales", tablero.cartas);
   
 /*
   Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
@@ -42,6 +39,7 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
     tablero.indiceCartaVolteadaB = indice;
     voltearLaCarta(tablero, indice);
     estadoPartida = "DosCartasLevantadas";
+    console.log("estado partida:", tablero.estadoPartida)
   }
 
   if (estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indice].estaVuelta) {
@@ -49,13 +47,14 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
     tablero.indiceCartaVolteadaA = indice;
     voltearLaCarta(tablero, indice);
     tablero.estadoPartida = "UnaCartaLevantada";
+    console.log("estado partida:", tablero.estadoPartida)
   } 
-
+  
   if (estadoPartida === "DosCartasLevantadas" && tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB ) {
     sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero);
+    console.log("estado partida:", tablero.estadoPartida)
   }
 
-  console.log("estado partida:", tablero.estadoPartida)
   return cartaVolteable;
 };
 

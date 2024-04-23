@@ -73,7 +73,7 @@ export const mostrarCarta = (indice: number) => {
     if (typeof(indice) === "number") {
         switch(indice) {
             case 1: {
-                imagen_1?.setAttribute("src", tablero.cartas[indice].imagen);
+                imagen_1?.setAttribute("src", tablero.cartas[indice - 1].imagen);
                 break;
             }
             case 2: {
@@ -117,7 +117,7 @@ export const mostrarCarta = (indice: number) => {
                 break;
             }
             case 12: {
-                imagen_12?.setAttribute("src", tablero.cartas[indice].imagen);
+                imagen_12?.setAttribute("src", tablero.cartas[11].imagen);
                 break;
             }
             default: {
