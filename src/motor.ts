@@ -2,7 +2,7 @@
 En el motor nos va a hacer falta un método para barajar cartas
 */
 
-import { infoCartas } from "./constantes";
+import * as constantes from "./constantes";
 import { Carta, Tablero, tablero } from "./model";
 import { mostrarCarta } from "./ui";
 
@@ -37,22 +37,21 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
   if (estadoPartida === "UnaCartaLevantada" && !tablero.cartas[indice].estaVuelta) {
     cartaVolteable = true;
     tablero.indiceCartaVolteadaB = indice;
-    voltearLaCarta(tablero, indice);
     estadoPartida = "DosCartasLevantadas";
+    voltearLaCarta(tablero, indice);
     console.log("estado partida:", tablero.estadoPartida)
   }
 
   if (estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indice].estaVuelta) {
     cartaVolteable = true;
     tablero.indiceCartaVolteadaA = indice;
-    voltearLaCarta(tablero, indice);
     tablero.estadoPartida = "UnaCartaLevantada";
     console.log("estado partida:", tablero.estadoPartida)
   } 
   
   if (estadoPartida === "DosCartasLevantadas" && tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB ) {
+    console.log("estado partida:", tablero.estadoPartida);
     sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero);
-    console.log("estado partida:", tablero.estadoPartida)
   }
 
   return cartaVolteable;
@@ -62,7 +61,7 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
 const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
 
   // Recibe el número de carta y cambia el src de la imagen
-  if (indice) {
+  if (sePuedeVoltearLaCarta(tablero, indice)) {
     switch(indice) {
       case 1: {
         mostrarCarta(indice);
@@ -137,14 +136,11 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
 */
 export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
   // Variable que almacena si el id de ambas fotos coinciden
-  let ambasSonPareja: boolean = false;
+  let ambasSonPareja: boolean = constantes.infoCartas[indiceA].idFoto === infoCartas[indiceB].idFoto;
 
-  // Comprueba si las dos cartas volteadas son pareja
-  if (infoCartas[indiceA].idFoto === infoCartas[indiceB].idFoto) {
-    ambasSonPareja = true;
+  if (ambasSonPareja) {
     parejaEncontrada(tablero, indiceA, indiceB);
   } else {
-    ambasSonPareja = false;
     parejaNoEncontrada(tablero, indiceA, indiceB);
   }
 
@@ -157,9 +153,9 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): b
 const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : void => {
   // Comprueba si las cartas son pareja
   // En caso de serlo inicia esPartidaCompleta
-    tablero.cartas[indiceA].encontrada = true;
-    tablero.cartas[indiceB].encontrada = true;
-    esPartidaCompleta(tablero);
+  tablero.cartas[indiceA].encontrada = true;
+  tablero.cartas[indiceB].encontrada = true;
+  esPartidaCompleta(tablero);
 };
 
 /*
@@ -168,9 +164,9 @@ const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : 
 const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
   // Comprueba si las cartas son pareja
   // En caso de no serlo voltea las cartas
-  let cartasNoPareja: number[] = [indiceA, indiceB];
-  cartasNoPareja.every((carta => {voltearLaCarta(tablero, carta);}))
-  tablero.estadoPartida = "CeroCartasLevantadas";
+  // let cartasNoPareja: number[] = [indiceA, indiceB];
+  // cartasNoPareja.every((carta => { tablero.estadoPartida = "CeroCartasLevantadas"}))
+  
 };
 
 /*
@@ -184,6 +180,7 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
   // Comprueba si se han encontrado todas las parejas
   while (contador < tablero.cartas.length) {
     const estadoCarta = tablero.cartas[contador].encontrada;
+
     if (estadoCarta) {
       partidaGanada = true;
       tablero.estadoPartida = "PartidaCompleta";
@@ -192,10 +189,10 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
       tablero.estadoPartida = "CeroCartasLevantadas";
     }
 
-  contador += 1;
-}
+    contador += 1;
+  }
 
-return partidaGanada;
+  return partidaGanada;
 };
 
 export const iniciaPartida = (tablero: Tablero): void => {
@@ -204,6 +201,5 @@ export const iniciaPartida = (tablero: Tablero): void => {
     // Cambia el estado de la partida y la prepara
     barajarCartas(tablero.cartas);
     tablero.estadoPartida = "CeroCartasLevantadas";
-
   }
 };
