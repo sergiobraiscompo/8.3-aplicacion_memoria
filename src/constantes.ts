@@ -16,15 +16,17 @@ export const infoCartas: InfoCarta[] = [
 ];
 
 // Almacenan las cartas en su elemento HTML
-export const imagen_1 = document.getElementById("imagen-carta-element-1");
-export const imagen_2 = document.getElementById("imagen-carta-element-2");
-export const imagen_3 = document.getElementById("imagen-carta-element-3");
-export const imagen_4 = document.getElementById("imagen-carta-element-4");
-export const imagen_5 = document.getElementById("imagen-carta-element-5");
-export const imagen_6 = document.getElementById("imagen-carta-element-6");
-export const imagen_7 = document.getElementById("imagen-carta-element-7");
-export const imagen_8 = document.getElementById("imagen-carta-element-8");
-export const imagen_9 = document.getElementById("imagen-carta-element-9");
-export const imagen_10 = document.getElementById("imagen-carta-element-10");
-export const imagen_11 = document.getElementById("imagen-carta-element-11");
-export const imagen_12 = document.getElementById("imagen-carta-element-12");
+export const elementosHTML = [
+    { elemento: "imagen_1", acceso: "imagen-carta-element-1" },
+    { elemento: "imagen_2", acceso: "imagen-carta-element-2" },
+    { elemento: "imagen_3", acceso: "imagen-carta-element-3" },
+    { elemento: "imagen_4", acceso: "imagen-carta-element-4" },
+    { elemento: "imagen_5", acceso: "imagen-carta-element-5" },
+    { elemento: "imagen_6", acceso: "imagen-carta-element-6" },
+    { elemento: "imagen_7", acceso: "imagen-carta-element-7" },
+    { elemento: "imagen_8", acceso: "imagen-carta-element-8" },
+    { elemento: "imagen_9", acceso: "imagen-carta-element-9" },
+    { elemento: "imagen_10", acceso: "imagen-carta-element-10" },
+    { elemento: "imagen_11", acceso: "imagen-carta-element-11" },
+    { elemento: "imagen_12", acceso: "imagen-carta-element-12" }
+]

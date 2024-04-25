@@ -1,6 +1,6 @@
 import { tablero } from "./model";
 import { sePuedeVoltearLaCarta } from "./motor";
-import * as htmlElements from "./constantes";
+import { elementosHTML } from "./constantes";
 
 
 // Botón crear partida
@@ -58,53 +58,56 @@ elemento_carta_12?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero
 export const mostrarCarta = (indice: number) => {
     // Carga la carta guardada en los elementos de imagen
     if (typeof(indice) === "number") {
+        let indiceAcceso = indice - 1;
+        console.log("indice carta:", indiceAcceso)
         switch(indice) {
             case 1: {
-                htmlElements.imagen_1?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 2: {
-                htmlElements.imagen_2?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 3: {
-                htmlElements.imagen_3?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 4: {
-                htmlElements.imagen_4?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 5: {
-                htmlElements.imagen_5?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 6: {
-                htmlElements.imagen_6?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 7: {
-                htmlElements.imagen_7?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 8: {
-                htmlElements.imagen_8?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 9: {
-                htmlElements.imagen_9?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 10: {
-                htmlElements.imagen_10?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 11: {
-                htmlElements.imagen_11?.setAttribute("src", tablero.cartas[indice].imagen);
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 12: {
-                htmlElements.imagen_12?.setAttribute("src", tablero.cartas[indice].imagen);
+                console.log("carta 12:", tablero.cartas[indiceAcceso])
+                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             default: {

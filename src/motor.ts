@@ -2,7 +2,7 @@
 En el motor nos va a hacer falta un método para barajar cartas
 */
 
-import * as constantes from "./constantes";
+// import * as constantes from "./constantes";
 import { Carta, Tablero, tablero } from "./model";
 import { mostrarCarta } from "./ui";
 
@@ -32,20 +32,22 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
   // Variable que almacena si la carta es volteable
   let cartaVolteable: boolean = false;
   let estadoPartida = tablero.estadoPartida;
+  const indiceAcceso = indice - 1;
 
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (estadoPartida === "UnaCartaLevantada" && !tablero.cartas[indice].estaVuelta) {
+  if (estadoPartida === "UnaCartaLevantada" && !tablero.cartas[indiceAcceso].estaVuelta) {
     cartaVolteable = true;
     tablero.indiceCartaVolteadaB = indice;
     estadoPartida = "DosCartasLevantadas";
     voltearLaCarta(tablero, indice);
-    console.log("estado partida:", tablero.estadoPartida)
+    console.log("estado partida:", tablero.estadoPartida);
   }
-
-  if (estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indice].estaVuelta) {
+  
+  if (estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indiceAcceso].estaVuelta) {
     cartaVolteable = true;
     tablero.indiceCartaVolteadaA = indice;
     tablero.estadoPartida = "UnaCartaLevantada";
+    voltearLaCarta(tablero, indice);
     console.log("estado partida:", tablero.estadoPartida)
   } 
   
@@ -59,68 +61,69 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
 
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
+  const indiceAcceso = indice - 1;
 
   // Recibe el número de carta y cambia el src de la imagen
-  if (sePuedeVoltearLaCarta(tablero, indice)) {
+  if (indice) {
     switch(indice) {
       case 1: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 2: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 3: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 4: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 5: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 6: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 7: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 8: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 9: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 10: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 11: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       case 12: {
         mostrarCarta(indice);
-        tablero.cartas[indice].estaVuelta = true;
+        tablero.cartas[indiceAcceso].estaVuelta = true;
         break;
       }
       default: {
@@ -136,7 +139,8 @@ const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
 */
 export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
   // Variable que almacena si el id de ambas fotos coinciden
-  let ambasSonPareja: boolean = constantes.infoCartas[indiceA].idFoto === infoCartas[indiceB].idFoto;
+  const indicesAcceso = [indiceA -1, indiceB -1];
+  let ambasSonPareja: boolean = tablero.cartas[indicesAcceso[0]].idFoto === tablero.cartas[indicesAcceso[1]].idFoto;
 
   if (ambasSonPareja) {
     parejaEncontrada(tablero, indiceA, indiceB);
@@ -165,7 +169,11 @@ const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number)
   // Comprueba si las cartas son pareja
   // En caso de no serlo voltea las cartas
   // let cartasNoPareja: number[] = [indiceA, indiceB];
-  // cartasNoPareja.every((carta => { tablero.estadoPartida = "CeroCartasLevantadas"}))
+  tablero
+  indiceA
+  indiceB
+
+  // cartasNoPareja.every((carta => {  , tablero.estadoPartida = "CeroCartasLevantadas"}))
   
 };
 
