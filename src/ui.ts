@@ -1,6 +1,6 @@
 import { tablero } from "./model";
 import { sePuedeVoltearLaCarta } from "./motor";
-import { elementosHTML } from "./constantes";
+import { elementosImagenHTML } from "./constantes";
 
 
 // Botón crear partida
@@ -60,54 +60,54 @@ export const mostrarCarta = (indice: number) => {
     if (typeof(indice) === "number") {
         let indiceAcceso = indice - 1;
         console.log("indice carta:", indiceAcceso)
+        
         switch(indice) {
             case 1: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 2: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 3: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 4: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 5: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 6: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 7: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 8: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 9: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 10: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 11: {
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             case 12: {
-                console.log("carta 12:", tablero.cartas[indiceAcceso])
-                document.getElementById(elementosHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
+                document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
                 break;
             }
             default: {

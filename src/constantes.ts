@@ -16,7 +16,7 @@ export const infoCartas: InfoCarta[] = [
 ];
 
 // Almacenan las cartas en su elemento HTML
-export const elementosHTML = [
+export const elementosImagenHTML = [
     { elemento: "imagen_1", acceso: "imagen-carta-element-1" },
     { elemento: "imagen_2", acceso: "imagen-carta-element-2" },
     { elemento: "imagen_3", acceso: "imagen-carta-element-3" },
