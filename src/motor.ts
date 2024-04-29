@@ -37,10 +37,11 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
   if (tablero.estadoPartida === "UnaCartaLevantada" && !tablero.cartas[indiceAcceso].estaVuelta) {
     cartaVolteable = true;
-    tablero.indiceCartaVolteadaB = indice;
+    tablero.indiceCartaVolteadaB = indiceAcceso;
     tablero.estadoPartida = "DosCartasLevantadas";
     voltearLaCarta(tablero, indice);
     console.log("estado partida:", tablero.estadoPartida);
+
     if (tablero.estadoPartida === "DosCartasLevantadas" && tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB ) {
       console.log("estado partida:", tablero.estadoPartida);
       sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero);
@@ -49,7 +50,7 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
   
   if (tablero.estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indiceAcceso].estaVuelta) {
     cartaVolteable = true;
-    tablero.indiceCartaVolteadaA = indice;
+    tablero.indiceCartaVolteadaA = indiceAcceso;
     tablero.estadoPartida = "UnaCartaLevantada";
     voltearLaCarta(tablero, indice);
     console.log("estado partida:", tablero.estadoPartida)
@@ -63,7 +64,7 @@ const voltearLaCarta = (tablero: Tablero, indice: number): void => {
   const indiceAcceso = indice - 1;
 
   // Recibe el número de carta y cambia el src de la imagen
-  if (indice && !tablero.cartas[indice].estaVuelta && !tablero.cartas[indice].encontrada) {
+  if (indice && !tablero.cartas[indiceAcceso].estaVuelta && !tablero.cartas[indiceAcceso].encontrada) {
     switch(indice) {
       case 1: {
         mostrarCarta(indice);
@@ -133,55 +134,67 @@ const voltearLaCarta = (tablero: Tablero, indice: number): void => {
   }
 
   // Recibe el número de carta y quita el src de la imagen
-  if (indice && tablero.cartas[indice].estaVuelta && !tablero.cartas[indice].encontrada) {
+  if (indice && tablero.cartas[indiceAcceso].estaVuelta && !tablero.cartas[indiceAcceso].encontrada) {
     switch(indice) {
       case 1: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 2: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 3: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 4: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 5: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 6: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 7: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 8: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 9: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 10: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 11: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       case 12: {
-          document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", tablero.cartas[indiceAcceso].imagen);
-          break;
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta)
+        break;
       }
       default: {
           console.log(`Ha ocurrido un error con al cargar la carta ${indice}`);
@@ -196,7 +209,7 @@ const voltearLaCarta = (tablero: Tablero, indice: number): void => {
 */
 export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
   // Variable que almacena si el id de ambas fotos coinciden
-  const indicesAcceso = [indiceA -1, indiceB -1];
+  const indicesAcceso = [indiceA, indiceB];
   let ambasSonPareja: boolean = tablero.cartas[indicesAcceso[0]].idFoto === tablero.cartas[indicesAcceso[1]].idFoto;
 
   if (ambasSonPareja) {
@@ -205,7 +218,7 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): b
     parejaNoEncontrada(tablero, indiceA, indiceB);
   }
 
-  console.log("Son pareja:", ambasSonPareja);
+  console.log("indice a:", tablero.cartas[indicesAcceso[0]].idFoto, "indice b:", tablero.cartas[indicesAcceso[1]].idFoto, "ambas son pareja:", ambasSonPareja);
   return ambasSonPareja;
 };
 
@@ -224,17 +237,15 @@ const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : 
 /*
 Aquí asumimos que no son pareja y las volvemos a poner boca abajo
 */
-const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
+const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB :number) : void => {
   // Comprueba si las cartas son pareja
   // En caso de no serlo voltea las cartas
   // let cartasNoPareja: number[] = [indiceA, indiceB];
   console.log("pareja no encontrada");
   setTimeout(() => {
-    voltearLaCarta;
+    sePuedeVoltearLaCarta(tablero, indiceA);
+    sePuedeVoltearLaCarta(tablero, indiceB);
   }, 1000);
-  tablero
-  indiceA
-  indiceB
 
   // cartasNoPareja.every((carta => {  , tablero.estadoPartida = "CeroCartasLevantadas"}))
   
@@ -249,6 +260,7 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
   let contador: number = 0;
 
   // Comprueba si se han encontrado todas las parejas
+  // TODO Pendiente hacer con array method every
   while (contador < tablero.cartas.length) {
     const estadoCarta = tablero.cartas[contador].encontrada;
 
@@ -269,9 +281,20 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
 export const iniciaPartida = (tablero: Tablero): void => {
   if (tablero.estadoPartida === "PartidaNoIniciada" || tablero.estadoPartida === "PartidaCompleta" || "DosCartasLevantadas") {
     console.log("Iniciando partida.");
+    
+    // Tablero inicial
+    tablero.cartas.forEach(carta => {
+      
+      carta.estaVuelta = false;
+      carta.encontrada = false;
+    })
+
+    tablero.estadoPartida = "CeroCartasLevantadas";
+    tablero.indiceCartaVolteadaA = -1;
+    tablero.indiceCartaVolteadaB = -1;
+    console.log(tablero.estadoPartida);
+
     // Cambia el estado de la partida y la prepara
     barajarCartas(tablero.cartas);
-    tablero.estadoPartida = "CeroCartasLevantadas";
-    console.log(tablero.estadoPartida);
   }
 };
