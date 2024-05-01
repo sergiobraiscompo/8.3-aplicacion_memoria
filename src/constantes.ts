@@ -12,7 +12,7 @@ export const infoCartas: InfoCarta[] = [
     {idFoto: 5, imagen: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/memo/5.png"},
     {idFoto: 5, imagen: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/memo/5.png"},
     {idFoto: 6, imagen: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/memo/6.png"},
-    {idFoto: 6, imagen: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/memo/6.png"},
+    {idFoto: 6, imagen: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/memo/6.png"}
 ];
 
 // Almacenan las cartas en su elemento HTML
@@ -29,4 +29,4 @@ export const elementosImagenHTML = [
     { elemento: "imagen_10", acceso: "imagen-carta-element-10" },
     { elemento: "imagen_11", acceso: "imagen-carta-element-11" },
     { elemento: "imagen_12", acceso: "imagen-carta-element-12" }
-]
+];

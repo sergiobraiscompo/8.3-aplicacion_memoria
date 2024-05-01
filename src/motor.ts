@@ -1,7 +1,3 @@
-/*
-En el motor nos va a hacer falta un método para barajar cartas
-*/
-
 // import * as constantes from "./constantes";
 import { Carta, Tablero, tablero } from "./model";
 import { mostrarCarta } from "./ui";
@@ -62,6 +58,77 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 const voltearLaCarta = (tablero: Tablero, indice: number): void => {
   const indiceAcceso = indice - 1;
+  console.log("quitando src de la imagen")
+
+  // Recibe el número de carta y quita el src de la imagen
+  if (indice && tablero.cartas[indiceAcceso].estaVuelta && !tablero.cartas[indiceAcceso].encontrada) {
+    switch(indice) {
+      case 1: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 2: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 3: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 4: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 5: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 6: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 7: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 8: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 9: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 10: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 11: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      case 12: {
+        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
+        console.log(tablero.cartas[indiceAcceso].estaVuelta);
+        break;
+      }
+      default: {
+          console.log(`Ha ocurrido un error con al cargar la carta ${indice}`);
+          break;
+      }
+    }
+  }
 
   // Recibe el número de carta y cambia el src de la imagen
   if (indice && !tablero.cartas[indiceAcceso].estaVuelta && !tablero.cartas[indiceAcceso].encontrada) {
@@ -132,76 +199,6 @@ const voltearLaCarta = (tablero: Tablero, indice: number): void => {
       }
     }
   }
-
-  // Recibe el número de carta y quita el src de la imagen
-  if (indice && tablero.cartas[indiceAcceso].estaVuelta && !tablero.cartas[indiceAcceso].encontrada) {
-    switch(indice) {
-      case 1: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 2: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 3: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 4: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 5: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 6: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 7: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 8: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 9: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 10: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 11: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      case 12: {
-        document.getElementById(elementosImagenHTML[indiceAcceso].acceso)?.setAttribute("src", "");
-        console.log(tablero.cartas[indiceAcceso].estaVuelta)
-        break;
-      }
-      default: {
-          console.log(`Ha ocurrido un error con al cargar la carta ${indice}`);
-          break;
-      }
-    }
-  }
 };
 
 /*
@@ -242,9 +239,11 @@ const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB :number) 
   // En caso de no serlo voltea las cartas
   // let cartasNoPareja: number[] = [indiceA, indiceB];
   console.log("pareja no encontrada");
+
   setTimeout(() => {
     sePuedeVoltearLaCarta(tablero, indiceA);
     sePuedeVoltearLaCarta(tablero, indiceB);
+    console.log("Volteando cartas de nuevo")
   }, 1000);
 
   // cartasNoPareja.every((carta => {  , tablero.estadoPartida = "CeroCartasLevantadas"}))
@@ -261,6 +260,10 @@ export const esPartidaCompleta = (tablero: Tablero): boolean => {
 
   // Comprueba si se han encontrado todas las parejas
   // TODO Pendiente hacer con array method every
+  tablero.cartas.every((carta) => {
+    carta.encontrada;
+  })
+
   while (contador < tablero.cartas.length) {
     const estadoCarta = tablero.cartas[contador].encontrada;
 
