@@ -58,17 +58,18 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolea
 
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 const voltearLaCarta = (tablero: Tablero, indice: number): void => {
-  const indiceAcceso = indice - 1;
-  console.log("quitando src de la imagen");
 
   // Recibe el número de carta y llama a mostrarCarta
-  if (indice && !tablero.cartas[indiceAcceso].estaVuelta && !tablero.cartas[indiceAcceso].encontrada) {
-    mostrarCarta(indice);
-  }
-
-  // else {
-  //   console.log(`Ha ocurrido un error al cargar el elemento ${indice}`);
-  // }
+  !tablero.cartas[indice - 1].estaVuelta && !tablero.cartas[indice - 1].encontrada
+  ? (
+    mostrarCarta(indice), 
+    tablero.cartas[indice - 1].estaVuelta = true,
+    console.log(`carta ${indice - 1} volteada: ${tablero.cartas[indice - 1].estaVuelta}`)
+    ) 
+  : (
+    console.log("quitando src de la imagen"),
+    document.getElementById(elementosImagenHTML[indice].acceso)?.setAttribute("src", "")
+  )
 };
 
 /*
@@ -105,20 +106,17 @@ const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : 
 Aquí asumimos que no son pareja y las volvemos a poner boca abajo
 */
 const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB :number) : void => {
-  // Comprueba si las cartas son pareja
   // En caso de no serlo voltea las cartas
-  // let cartasNoPareja: number[] = [indiceA, indiceB];
   console.log("pareja no encontrada");
 
   setTimeout(() => {
-    document.getElementById(elementosImagenHTML[indiceA - 1].acceso)?.setAttribute("src", "");
-    document.getElementById(elementosImagenHTML[indiceB - 1].acceso)?.setAttribute("src", "");
-    console.log(tablero.cartas[indiceB - 1].estaVuelta);
-    console.log("Volteando cartas de nuevo")
+    voltearLaCarta(tablero, indiceA);
+    voltearLaCarta(tablero, indiceB);
+    tablero.estadoPartida = "CeroCartasLevantadas";
+    console.log("Volteando cartas de nuevo");
+    console.log(`La carta ${indiceA} volteada: ${tablero.cartas[indiceA].estaVuelta}`);
+    console.log(`La carta ${indiceB} volteada: ${tablero.cartas[indiceB].estaVuelta}`);
   }, 1000);
-
-  // cartasNoPareja.every((carta => {  , tablero.estadoPartida = "CeroCartasLevantadas"}))
-  
 };
 
 /*
@@ -158,7 +156,6 @@ export const iniciaPartida = (tablero: Tablero): void => {
     
     // Tablero inicial
     tablero.cartas.forEach(carta => {
-      
       carta.estaVuelta = false;
       carta.encontrada = false;
     })

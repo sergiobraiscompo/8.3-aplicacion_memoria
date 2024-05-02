@@ -59,7 +59,6 @@ export const mostrarCarta = (indice: number) => {
     // Carga la carta guardada en los elementos de imagen
     if (typeof(indice) === "number") {
         let indiceAcceso = indice - 1;
-        console.log("indice carta:", indiceAcceso)
         
         switch(indice) {
             case 1: {
