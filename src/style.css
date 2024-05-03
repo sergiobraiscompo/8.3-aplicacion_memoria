@@ -5,7 +5,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 15%;
 }
 
@@ -22,21 +22,15 @@ body {
 
 .carta-element {
   display: flex;
-  height: 150px;
-  width: 150px;
-  padding: 50%;
+  height: 125px;
+  width: 125px;
   justify-content: center;
   align-items: center;
   background-color: rgb(127, 253, 253);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
-.boton {
-  align-self: center;
-  height: 5rem;
-  padding: 0 1rem;
-  margin: 2rem;
-  background-color: green;
-  color: white;
-  font-size: 50px;
+.imagen-element {
+  height: 125px;
+  width: 125px;
 }
