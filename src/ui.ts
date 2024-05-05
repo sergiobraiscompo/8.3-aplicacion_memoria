@@ -6,6 +6,13 @@ import { elementosImagenHTML } from "./constantes";
 // Botón crear partida
 export const botonEmpezarPartida = document.getElementById("boton-empezar-partida");
 
+// elemento intentos
+const elemento_intentos = document.getElementById("intentos-element");
+
+// elemento mensajes
+const elemento_mensaje = document.getElementById("mensaje-element");
+
+
 // Carta 1
 export const elemento_carta_1 = document.getElementById("carta-element-1");
 elemento_carta_1?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 0));
@@ -54,9 +61,21 @@ elemento_carta_11?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero
 const elemento_carta_12 = document.getElementById("carta-element-12");
 elemento_carta_12?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 11));
 
+
 export const mostrarCarta = (indice: number) => {
     // Carga la carta guardada en los elementos de imagen
     if (typeof(indice) === "number") {
         document.getElementById(elementosImagenHTML[indice].acceso)?.setAttribute("src", tablero.cartas[indice].imagen);
     }
+
+    mostrarIntentos();
+}
+
+const mostrarIntentos = () => {
+    const intento = document.createElement("Intentos: " + tablero.intentos);
+    elemento_intentos?.appendChild(intento);
+}
+
+export const mostrarMensaje = (mensaje: string[]) => {
+    elemento_mensaje?.appendChild(document.createElement(mensaje));
 }
