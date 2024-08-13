@@ -1,5 +1,3 @@
-import { botonEmpezarPartida } from "./ui";
-import { iniciaPartida } from "./motor";
-import { tablero } from "./model";
+import * as shell from "./shell";
 
-botonEmpezarPartida?.addEventListener("click", () => iniciaPartida(tablero));
+shell

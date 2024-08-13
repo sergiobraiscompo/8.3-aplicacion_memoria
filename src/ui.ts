@@ -1,81 +1,34 @@
 import { tablero } from "./model";
-import { sePuedeVoltearLaCarta } from "./motor";
-import { elementosImagenHTML } from "./constantes";
+import * as constantes from "./constantes";
 
 
-// Botón crear partida
-export const botonEmpezarPartida = document.getElementById("boton-empezar-partida");
+// Recibe y muestra el número de intentos
+export const mostrarIntentos = () => {
+    if (constantes.elemento_intentos instanceof HTMLDivElement) { 
+        const texto: string = "Intento:";
+        constantes.elemento_intentos.innerText = texto + tablero.intentos;
+    }
+}
 
-// elemento intentos
-const elemento_intentos = document.getElementById("intentos-element");
+// Recibe y muestra el estado de la partida
+export const mostrarEstado = () => {
+    if (constantes.elemento_intentos instanceof HTMLDivElement) { 
+        const texto: string = "Estado partida:";
+        constantes.elemento_intentos.innerText = texto + tablero.estadoPartida;
+    }
+}
 
-// elemento mensajes
-const elemento_mensaje = document.getElementById("mensaje-element");
-
-
-// Carta 1
-export const elemento_carta_1 = document.getElementById("carta-element-1");
-elemento_carta_1?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 0));
-
-// Carta 2
-const elemento_carta_2 = document.getElementById("carta-element-2");
-elemento_carta_2?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 1));
-
-// Carta 3
-const elemento_carta_3 = document.getElementById("carta-element-3");
-elemento_carta_3?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 2));
-
-// Carta 4
-const elemento_carta_4 = document.getElementById("carta-element-4");
-elemento_carta_4?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 3));
-
-// Carta 5
-const elemento_carta_5 = document.getElementById("carta-element-5");
-elemento_carta_5?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 4));
-
-// Carta 6
-const elemento_carta_6 = document.getElementById("carta-element-6");
-elemento_carta_6?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 5));
-
-// Carta 7
-const elemento_carta_7 = document.getElementById("carta-element-7");
-elemento_carta_7?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 6));
-
-// Carta 8
-const elemento_carta_8 = document.getElementById("carta-element-8");
-elemento_carta_8?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 7));
-
-// Carta 9
-const elemento_carta_9 = document.getElementById("carta-element-9");
-elemento_carta_9?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 8));
-
-// Carta 10
-const elemento_carta_10 = document.getElementById("carta-element-10");
-elemento_carta_10?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 9));
-
-// Carta 11
-const elemento_carta_11 = document.getElementById("carta-element-11");
-elemento_carta_11?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 10));
-
-// Carta 12
-const elemento_carta_12 = document.getElementById("carta-element-12");
-elemento_carta_12?.addEventListener("click", () => sePuedeVoltearLaCarta(tablero, 11));
-
-
+// Recibe el índice de la carta actual y la muestra en el tablero
 export const mostrarCarta = (indice: number) => {
     // Carga la carta guardada en los elementos de imagen
     if (typeof(indice) === "number") {
-        document.getElementById(elementosImagenHTML[indice].acceso)?.setAttribute("src", tablero.cartas[indice].imagen);
+        document.getElementById(constantes.elementosImagenHTML[indice].acceso)?.setAttribute("src", tablero.cartas[indice].imagen);
     }
-
-    mostrarIntentos();
 }
 
-const mostrarIntentos = () => {
-    const intento = document.createElement("Intentos: " + tablero.intentos);
-    elemento_intentos?.appendChild(intento);
-}
-
-export const mostrarMensaje = (mensaje: string[]) => {
-    elemento_mensaje?.appendChild(document.createElement(mensaje));
+// Recibe un mensaje y lo muestra en pantalla
+export const mostrarMensaje = (mensaje: string) => {
+    if (constantes.elemento_mensaje instanceof HTMLDivElement) {
+        constantes.elemento_mensaje.innerText = mensaje;
+    }
 }
