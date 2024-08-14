@@ -27,9 +27,10 @@ const barajarCartas = (cartas : constantes.Carta[]): constantes.Carta[] => {
 export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: number ): boolean => {
   // Variable que almacena si la carta es volteable
   let cartaVolteable: boolean = false;
+  const carta = tablero.cartas[indice];
 
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (tablero.estadoPartida === "UnaCartaLevantada" || tablero.estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indice].estaVuelta) {
+  if (tablero.estadoPartida != "DosCartasLevantadas"  && !carta.estaVuelta && !carta.encontrada) {
     cartaVolteable = true;
   }
   
@@ -41,27 +42,23 @@ const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
   mostrarMensaje("");
 
   // Recibe el número de carta y llama a mostrarCarta
-  (!tablero.cartas[indice].estaVuelta && !tablero.cartas[indice].encontrada)
-  ? (
-      mostrarCarta(indice),
-      tablero.cartas[indice].estaVuelta = true
-    )
-  : (
-    document.getElementById(constantes.elementosImagenHTML[indice].acceso)?.setAttribute("src", ""),
-    tablero.cartas[indice].estaVuelta = false
-  )
+  if (sePuedeVoltearLaCarta(tablero, indice)) {
+    mostrarCarta(indice),
+    tablero.cartas[indice].estaVuelta = true
+  }
 
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (tablero.estadoPartida === "UnaCartaLevantada" && !tablero.cartas[indice].estaVuelta) {
-    tablero.indiceCartaVolteadaB = indice;
-    tablero.estadoPartida = "DosCartasLevantadas";
-  }
+  (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaA > -1 && !tablero.cartas[indice].estaVuelta)
+  ? (
+      tablero.indiceCartaVolteadaA = indice,
+      tablero.estadoPartida = "UnaCartaLevantada"
+    )
+  : (
+    tablero.indiceCartaVolteadaB = indice,
+    tablero.intentos += 1,
+    tablero.estadoPartida = "DosCartasLevantadas"
+  )
 
-  if (tablero.estadoPartida === "CeroCartasLevantadas" && !tablero.cartas[indice].estaVuelta) {
-    tablero.indiceCartaVolteadaA = indice;
-    tablero.estadoPartida = "UnaCartaLevantada";
-  }
-  
   mostrarEstado();
   mostrarIntentos();
 };
@@ -72,15 +69,6 @@ const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
 export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.Tablero): boolean => {
   // Variable que almacena si el id de ambas fotos coinciden
   let ambasSonPareja: boolean = tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto;
-  tablero.intentos += 1;
-
-  if (ambasSonPareja) {
-    parejaEncontrada(tablero, indiceA, indiceB);
-  } else {
-    parejaNoEncontrada(tablero, indiceA, indiceB);
-  }
-  
-  mostrarEstado();
   mostrarIntentos();
   return ambasSonPareja;
 };

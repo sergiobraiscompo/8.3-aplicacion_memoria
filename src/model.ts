@@ -16,6 +16,7 @@ const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
     while (contador < infoCartas.length){
         const carta = infoCartas[contador];
         coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
+        coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
         contador += 1;
     }
     
@@ -23,6 +24,7 @@ const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
 };
 
 export let cartas: Carta[] = crearColeccionDeCartasInicial(infoCartas);
+
 
 const crearTableroInicial = (): Tablero => ({
     cartas: cartas,
