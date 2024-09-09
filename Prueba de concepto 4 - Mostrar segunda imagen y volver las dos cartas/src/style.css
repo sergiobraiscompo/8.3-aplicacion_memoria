@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tablero-juego {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 40px;
+  height: auto;
+  background-color: rgb(201, 255, 255);
+}
+
+.carta-element {
+  display: flex;
+  height: 150px;
+  width: 150px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(127, 253, 253);
+  border-radius: 30px;
+  margin: 5px;
+}
