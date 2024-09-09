@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carta-element {
+  display: flex;
+  height: 150px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(127, 253, 253);
+  border-radius: 30px;
+}
+
+.imagen-element {
+  height: 125px;
+  width: 125px;
+}
