@@ -20,9 +20,11 @@ export const mostrarEstado = () => {
 
 // Recibe el índice de la carta actual y la muestra en el tablero
 export const mostrarCarta = (indice: number) => {
+    const elementoCarta = document.getElementById(constantes.elementosImagenHTML[indice].acceso);
+
     // Carga la carta guardada en los elementos de imagen
-    if (typeof(indice) === "number") {
-        document.getElementById(constantes.elementosImagenHTML[indice].acceso)?.setAttribute("src", tablero.cartas[indice].imagen);
+    if (elementoCarta) {
+        elementoCarta.style.visibility = "visible";
     }
 }
 

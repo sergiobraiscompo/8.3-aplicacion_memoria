@@ -28,49 +28,13 @@ export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: numbe
   // Variable que almacena si la carta es volteable
   let cartaVolteable: boolean = false;
   const carta = tablero.cartas[indice];
-
+  
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (tablero.estadoPartida != "DosCartasLevantadas"  && !carta.estaVuelta && !carta.encontrada) {
+  if (tablero.estadoPartida === "UnaCartaLevantada" || tablero.estadoPartida === "CeroCartasLevantadas" && !carta.estaVuelta && !carta.encontrada) {
     cartaVolteable = true;
   }
   
   return cartaVolteable;
-};
-
-// Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
-const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
-  mostrarMensaje("");
-
-  // Recibe el número de carta y llama a mostrarCarta
-  if (sePuedeVoltearLaCarta(tablero, indice)) {
-    mostrarCarta(indice),
-    tablero.cartas[indice].estaVuelta = true
-  }
-
-  // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaA > -1 && !tablero.cartas[indice].estaVuelta)
-  ? (
-      tablero.indiceCartaVolteadaA = indice,
-      tablero.estadoPartida = "UnaCartaLevantada"
-    )
-  : (
-    tablero.indiceCartaVolteadaB = indice,
-    tablero.intentos += 1,
-    tablero.estadoPartida = "DosCartasLevantadas"
-  )
-
-  mostrarEstado();
-  mostrarIntentos();
-};
-
-/*
-  Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
-*/
-export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.Tablero): boolean => {
-  // Variable que almacena si el id de ambas fotos coinciden
-  let ambasSonPareja: boolean = tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto;
-  mostrarIntentos();
-  return ambasSonPareja;
 };
 
 // Aquí asumimos ya que son pareja, lo que hacemos es marcarlas como encontradas y comprobar si la partida esta completa
@@ -89,17 +53,65 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
 // Aquí asumimos que no son pareja y las volvemos a poner boca abajo
 const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indiceB :number) : void => {
   console.log("Pareja no encontrada.");
-
+  
   setTimeout(() => {
     console.log("Volteando carta de nuevo.");
-    voltearLaCarta(tablero, indiceA);
-    voltearLaCarta(tablero, indiceB);
+    const imagenA = document.getElementById(constantes.elementosImagenHTML[indiceA].acceso);
+    const imagenB = document.getElementById(constantes.elementosImagenHTML[indiceB].acceso);
+
+    if (imagenA && imagenB) {
+      imagenA.style.visibility = "hidden";
+      imagenB.style.visibility = "hidden";
+    }
     tablero.estadoPartida = "CeroCartasLevantadas";
   }, 1000);
-
+  
   mostrarEstado();
   mostrarIntentos();
 };
+
+/*
+Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
+*/
+export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.Tablero): boolean => {
+  // Variable que almacena si el id de ambas fotos coinciden
+  let ambasSonPareja: boolean = tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto;
+  mostrarIntentos();
+  return ambasSonPareja;
+};
+
+// Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
+export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
+  console.log(`Volteando carta: ${indice+1}`);
+  mostrarMensaje("");
+
+  // Recibe el número de carta y llama a mostrarCarta
+  if (sePuedeVoltearLaCarta(tablero, indice)) {
+    mostrarCarta(indice),
+    tablero.cartas[indice].estaVuelta = true
+  }
+  
+  // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
+  if (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB) {
+    (tablero.indiceCartaVolteadaA > -1)
+    ? (
+      tablero.indiceCartaVolteadaB = indice,
+      tablero.intentos += 1,
+      tablero.estadoPartida = "DosCartasLevantadas",
+      sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero)
+      ? parejaEncontrada(tablero, tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB)
+      : parejaNoEncontrada(tablero, tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB)
+    )
+    : (
+      tablero.indiceCartaVolteadaA = indice,
+      tablero.estadoPartida = "UnaCartaLevantada"
+      )
+
+    mostrarEstado();
+    mostrarIntentos();
+  };
+}
+
 
 // Esto lo podemos comprobar o bien utilizando every, o bien utilizando un contador (cartasEncontradas)
 export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
