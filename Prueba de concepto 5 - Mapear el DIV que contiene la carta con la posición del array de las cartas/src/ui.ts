@@ -24,7 +24,7 @@ export const mostrarCarta = (indice: number) => {
 
     // Carga la carta guardada en los elementos de imagen
     if (elementoCarta) {
-        elementoCarta.style.visibility = "visible";
+       elementoCarta.setAttribute("src", tablero.cartas[indice].imagen);
     }
 }
 

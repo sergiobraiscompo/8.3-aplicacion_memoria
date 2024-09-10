@@ -30,8 +30,10 @@ export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: numbe
   const carta = tablero.cartas[indice];
   
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
-  if (tablero.estadoPartida === "UnaCartaLevantada" || tablero.estadoPartida === "CeroCartasLevantadas" && !carta.estaVuelta && !carta.encontrada) {
-    cartaVolteable = true;
+  if (tablero.estadoPartida === "UnaCartaLevantada" || tablero.estadoPartida === "CeroCartasLevantadas") {
+    if (!carta.estaVuelta && !carta.encontrada) {
+      cartaVolteable = true;
+    }
   }
   
   return cartaVolteable;
@@ -40,12 +42,15 @@ export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: numbe
 // Aquí asumimos ya que son pareja, lo que hacemos es marcarlas como encontradas y comprobar si la partida esta completa
 const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB: number) : void => {
   // Comprueba si las cartas son pareja
-  console.log("Pareja encontrada.")
+  console.log("Pareja encontrada.");
   tablero.cartas[indiceA].encontrada = true;
   tablero.cartas[indiceB].encontrada = true;
   tablero.estadoPartida = "CeroCartasLevantadas";
+  
+  tablero.indiceCartaVolteadaA = -1;
+  tablero.indiceCartaVolteadaB = -1;
+  
   esPartidaCompleta(tablero);
-
   mostrarEstado();
   mostrarIntentos();
 };
@@ -58,11 +63,18 @@ const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indice
     console.log("Volteando carta de nuevo.");
     const imagenA = document.getElementById(constantes.elementosImagenHTML[indiceA].acceso);
     const imagenB = document.getElementById(constantes.elementosImagenHTML[indiceB].acceso);
-
+    
     if (imagenA && imagenB) {
-      imagenA.style.visibility = "hidden";
-      imagenB.style.visibility = "hidden";
+      imagenA.setAttribute("src", "");
+      imagenB.setAttribute("src", "");
     }
+    
+    tablero.indiceCartaVolteadaA = -1;
+    tablero.indiceCartaVolteadaB = -1;
+    
+    tablero.cartas[indiceA].estaVuelta = false;
+    tablero.cartas[indiceB].estaVuelta = false;
+    
     tablero.estadoPartida = "CeroCartasLevantadas";
   }, 1000);
   
@@ -84,7 +96,8 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.
 export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
   console.log(`Volteando carta: ${indice+1}`);
   mostrarMensaje("");
-
+  console.log(`carta: ${indice}`)
+  
   // Recibe el número de carta y llama a mostrarCarta
   if (sePuedeVoltearLaCarta(tablero, indice)) {
     mostrarCarta(indice),
@@ -98,15 +111,16 @@ export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): voi
       tablero.indiceCartaVolteadaB = indice,
       tablero.intentos += 1,
       tablero.estadoPartida = "DosCartasLevantadas",
-      sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero)
+      
+      sonPareja(tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB, tablero)      
       ? parejaEncontrada(tablero, tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB)
       : parejaNoEncontrada(tablero, tablero.indiceCartaVolteadaA, tablero.indiceCartaVolteadaB)
     )
     : (
       tablero.indiceCartaVolteadaA = indice,
       tablero.estadoPartida = "UnaCartaLevantada"
-      )
-
+    )
+    
     mostrarEstado();
     mostrarIntentos();
   };
@@ -119,15 +133,11 @@ export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
   let partidaGanada: boolean = false;
 
   // Comprueba si se han encontrado todas las parejas
-  tablero.cartas.every((carta) => {
-    if (carta.encontrada) {
-      partidaGanada = true;
-      tablero.estadoPartida = "PartidaCompleta";
-    } else {
-      partidaGanada = false;
-      tablero.estadoPartida = "CeroCartasLevantadas";
-    }
-  })
+  tablero.cartas.every((carta) => {return carta.encontrada});
+
+  partidaGanada
+  ? tablero.estadoPartida = "PartidaCompleta"
+  : tablero.estadoPartida = "CeroCartasLevantadas";
   
   mostrarEstado();
   mostrarIntentos();
@@ -146,7 +156,12 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
 
   // Voltea todas las cartas al estado incial
   for (let indice = 0; indice++; indice < 11) {
-    document.getElementById(constantes.elementosImagenHTML[indice].acceso)?.setAttribute("src", "")
+    const imagen = document.getElementById(constantes.elementosImagenHTML[indice].acceso);
+
+    if (imagen instanceof HTMLImageElement) {
+      imagen.setAttribute("src", "");
+      mostrarCarta(indice);
+    }  
   }
 
   tablero.indiceCartaVolteadaA = -1;
