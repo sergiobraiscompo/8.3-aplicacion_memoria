@@ -118,6 +118,7 @@ export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): voi
     )
     : (
       tablero.indiceCartaVolteadaA = indice,
+      console.log(`carta a: ${tablero.indiceCartaVolteadaA}, carta b: ${tablero.indiceCartaVolteadaB}`),
       tablero.estadoPartida = "UnaCartaLevantada"
     )
     
