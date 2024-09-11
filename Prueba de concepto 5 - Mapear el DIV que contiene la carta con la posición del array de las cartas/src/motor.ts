@@ -28,11 +28,11 @@ export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: numbe
   // Variable que almacena si la carta es volteable
   const carta = tablero.cartas[indice];
   
-  if (!carta.estaVuelta) {
+  if (carta.estaVuelta) {
     mostrarMensaje("Esta carta ya está girada, elige otra carta que esté boca abajo.");
   }
 
-  if (!carta.encontrada) {
+  if (carta.encontrada) {
     mostrarMensaje("Esta carta ya tiene pareja, elige otra carta que esté boca abajo.");
   }
 
@@ -135,12 +135,14 @@ export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
   // Comprueba si se han encontrado todas las parejas
   let partidaGanada: boolean = tablero.cartas.every(carta => carta.encontrada === true);
 
-  partidaGanada
-  ? tablero.estadoPartida = "PartidaCompleta"
-  : tablero.estadoPartida = "CeroCartasLevantadas";
   
   mostrarEstado();
   mostrarIntentos();
+
+  partidaGanada
+  ? (tablero.estadoPartida = "PartidaCompleta", mostrarMensaje("¡¡¡Patrida Ganada!!!"))
+  : (tablero.estadoPartida = "CeroCartasLevantadas");
+  
   return partidaGanada;
 };
 
@@ -155,6 +157,7 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
   
   tablero.indiceCartaVolteadaA = -1;
   tablero.indiceCartaVolteadaB = -1;
+  tablero.intentos = 0;
 
   // Voltea todas las cartas al estado incial
   for (const elementoImagenHTML of constantes.elementosImagenHTML) {
@@ -168,4 +171,5 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
   barajarCartas(tablero.cartas);
   mostrarEstado();
   mostrarIntentos();
+  mostrarMensaje("");
 };
