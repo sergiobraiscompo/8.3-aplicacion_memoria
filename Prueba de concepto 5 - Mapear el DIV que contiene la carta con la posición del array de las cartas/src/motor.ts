@@ -1,6 +1,6 @@
 // import * as constantes from "./constantes";
 import { tablero } from "./model";
-import { mostrarCarta, mostrarEstado, mostrarIntentos, mostrarMensaje } from "./ui";
+import { mostrarCarta, mostrarIntentos, mostrarMensaje } from "./ui";
 import * as constantes from "./constantes";
 
 // Rebice el array tablero.cartas y devuelve los elementos mezclados
@@ -57,7 +57,6 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
   tablero.indiceCartaVolteadaB = -1;
   
   esPartidaCompleta(tablero);
-  mostrarEstado();
   mostrarIntentos();
   mostrarMensaje("¡Pareja encontrada!");
 };
@@ -73,16 +72,15 @@ const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indice
       imagenA.setAttribute("src", "");
       imagenB.setAttribute("src", "");
     }
-
+    
+    tablero.estadoPartida = "CeroCartasLevantadas";
     tablero.cartas[indiceA].estaVuelta = false;
     tablero.cartas[indiceB].estaVuelta = false;
     tablero.indiceCartaVolteadaA = -1;
     tablero.indiceCartaVolteadaB = -1;
     
-    tablero.estadoPartida = "CeroCartasLevantadas";
   }, 1000);
   
-  mostrarEstado();
   mostrarIntentos();
 };
 
@@ -124,7 +122,6 @@ export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): voi
       )
     }
 
-    mostrarEstado();
     mostrarIntentos();
   };
 }
@@ -137,7 +134,6 @@ export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
   let partidaGanada: boolean = tablero.cartas.every(carta => carta.encontrada === true);
 
   
-  mostrarEstado();
   mostrarIntentos();
 
   partidaGanada
@@ -170,7 +166,6 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
   
   // Cambia el estado de la partida y la prepara
   barajarCartas(tablero.cartas);
-  mostrarEstado();
   mostrarIntentos();
   mostrarMensaje("");
 };

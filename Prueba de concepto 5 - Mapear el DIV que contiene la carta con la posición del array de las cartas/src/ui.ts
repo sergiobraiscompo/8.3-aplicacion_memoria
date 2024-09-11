@@ -7,20 +7,12 @@ export const mostrarIntentos = () => {
     if (constantes.elemento_intentos instanceof HTMLDivElement) { 
         const titulo = document.createElement("h3");
         titulo.innerText = "INTENTOS";
-        
+
         const intentos = document.createElement("span");
         intentos.innerText = tablero.intentos.toString();
 
         constantes.elemento_intentos.appendChild(titulo);
         constantes.elemento_intentos.appendChild(intentos)
-    }
-}
-
-// Recibe y muestra el estado de la partida
-export const mostrarEstado = () => {
-    if (constantes.elemento_intentos instanceof HTMLDivElement) { 
-        const texto: string = "Estado partida:";
-        constantes.elemento_intentos.innerText = texto + tablero.estadoPartida;
     }
 }
 
