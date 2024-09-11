@@ -28,6 +28,18 @@ export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: numbe
   // Variable que almacena si la carta es volteable
   const carta = tablero.cartas[indice];
   
+  if (!carta.estaVuelta) {
+    mostrarMensaje("Esta carta ya está girada, elige otra carta que esté boca abajo.");
+  }
+
+  if (!carta.encontrada) {
+    mostrarMensaje("Esta carta ya tiene pareja, elige otra carta que esté boca abajo.");
+  }
+
+  if(tablero.estadoPartida === "PartidaNoIniciada" || tablero.estadoPartida === "PartidaCompleta") {
+    mostrarMensaje("Por favor inicia una nueva  partida.")
+  }
+
   // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
   return (!carta.estaVuelta && !carta.encontrada) && (tablero.estadoPartida === "UnaCartaLevantada" || tablero.estadoPartida === "CeroCartasLevantadas")
     ? true
@@ -47,6 +59,7 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
   esPartidaCompleta(tablero);
   mostrarEstado();
   mostrarIntentos();
+  mostrarMensaje("¡Pareja encontrada!");
 };
 
 // Aquí asumimos que no son pareja y las volvemos a poner boca abajo
