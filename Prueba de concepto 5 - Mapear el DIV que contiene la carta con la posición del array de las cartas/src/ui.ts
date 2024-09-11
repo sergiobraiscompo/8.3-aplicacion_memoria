@@ -5,8 +5,14 @@ import * as constantes from "./constantes";
 // Recibe y muestra el número de intentos
 export const mostrarIntentos = () => {
     if (constantes.elemento_intentos instanceof HTMLDivElement) { 
-        const texto: string = "Intento:";
-        constantes.elemento_intentos.innerText = texto + tablero.intentos;
+        const titulo = document.createElement("h3");
+        titulo.innerText = "INTENTOS";
+        
+        const intentos = document.createElement("span");
+        intentos.innerText = tablero.intentos.toString();
+
+        constantes.elemento_intentos.appendChild(titulo);
+        constantes.elemento_intentos.appendChild(intentos)
     }
 }
 

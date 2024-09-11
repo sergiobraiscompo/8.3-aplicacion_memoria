@@ -107,6 +107,7 @@ export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): voi
     
     // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
     if (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB) {
+      console.log("Comprobando si son pareja");
       (tablero.indiceCartaVolteadaA > -1)
       ? (
         tablero.indiceCartaVolteadaB = indice,
