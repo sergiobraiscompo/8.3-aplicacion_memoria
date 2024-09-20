@@ -2,7 +2,7 @@ import { arrayPrueba } from './constantes';
 import './style.css';
 
 
-const mezcla_y_devuelve_array = (lista:string[]) => {
+const mezclaYDevuelveArray = (lista:string[]) => {
     
     // Mientras queden elementos a mezclar
     let current_index = lista.length;
@@ -20,4 +20,4 @@ const mezcla_y_devuelve_array = (lista:string[]) => {
     return lista;
 }
 
-console.log(mezcla_y_devuelve_array(arrayPrueba));
+console.log(mezclaYDevuelveArray(arrayPrueba));

@@ -65,8 +65,8 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
 const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indiceB :number) : void => {
   
   setTimeout(() => {
-    const imagenA = document.getElementById(constantes.elementosImagenHTML[indiceA].acceso);
-    const imagenB = document.getElementById(constantes.elementosImagenHTML[indiceB].acceso);
+    const imagenA = document.getElementById(constantes.elementosImagenHTML[indiceA]);
+    const imagenB = document.getElementById(constantes.elementosImagenHTML[indiceB]);
     
     if (imagenA && imagenB) {
       imagenA.setAttribute("src", "");
@@ -158,8 +158,8 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
 
   // Voltea todas las cartas al estado incial
   for (const elementoImagenHTML of constantes.elementosImagenHTML) {
-    if (elementoImagenHTML.acceso) {
-      const elementoImagen = document.getElementById(elementoImagenHTML.acceso);
+    if (elementoImagenHTML) {
+      const elementoImagen = document.getElementById(elementoImagenHTML);
       elementoImagen?.setAttribute("src", "");
     }
   }

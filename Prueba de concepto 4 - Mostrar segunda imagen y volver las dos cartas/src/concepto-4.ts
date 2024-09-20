@@ -3,8 +3,12 @@ import * as constantes  from "./constantes";
 
 const gira_cartas_de_nuevo = () => {
     setTimeout(() => {
-        constantes.imagen_carta_1_element?.setAttribute("src", "");
-        constantes.imagen_carta_2_element?.setAttribute("src", "");
+        if (constantes.elementoImagen1 && constantes.elementoImagen1 != undefined && constantes.elementoImagen1 != null) {
+            constantes.elementoImagen1?.setAttribute("src", "");
+        }
+        if (constantes.elementoImagen2 && constantes.elementoImagen2 != undefined && constantes.elementoImagen2 != null) {
+            constantes.elementoImagen2?.setAttribute("src", "");
+        }
     }, 1000);
 }
 
@@ -13,11 +17,11 @@ const gira_carta = (carta: number): void => {
     if (carta) {
         switch(carta) {
             case 1: {
-                constantes.imagen_carta_1_element?.setAttribute("src", constantes.infoCartas[0].imagen);
+                constantes.elementoImagen1?.setAttribute("src", constantes.infoCartas[0].imagen);
                 break;
             }
             case 2: {
-                constantes.imagen_carta_2_element?.setAttribute("src", constantes.infoCartas[0].imagen);
+                constantes.elementoImagen2?.setAttribute("src", constantes.infoCartas[0].imagen);
                 gira_cartas_de_nuevo();
                 break;
             }
@@ -32,5 +36,5 @@ const gira_carta = (carta: number): void => {
 };
 
 // Gestiona el click en las cartas
-constantes.carta_1_element?.addEventListener("click", () => gira_carta(1));
-constantes.carta_2_element?.addEventListener("click", () => gira_carta(2));
+constantes.carta1Element?.addEventListener("click", () => gira_carta(1));
+constantes.carta2Element?.addEventListener("click", () => gira_carta(2));

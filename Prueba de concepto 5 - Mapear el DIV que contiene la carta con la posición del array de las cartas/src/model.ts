@@ -10,17 +10,17 @@ const crearCartaInicial = (idFoto: number, imagen: string): Carta => ({
 
 /* Crea un array de 12 cartas de tipo infoCarta */
 const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
-    let coleccion_inicial_cartas: Carta[] = [];
+    let coleccionInicialCartas: Carta[] = [];
     let contador = 0;
 
     while (contador < infoCartas.length){
         const carta = infoCartas[contador];
-        coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
-        coleccion_inicial_cartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
+        coleccionInicialCartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
+        coleccionInicialCartas.push(crearCartaInicial(carta.idFoto, carta.imagen));
         contador += 1;
     }
     
-    return coleccion_inicial_cartas;
+    return coleccionInicialCartas;
 };
 
 export let cartas: Carta[] = crearColeccionDeCartasInicial(infoCartas);
