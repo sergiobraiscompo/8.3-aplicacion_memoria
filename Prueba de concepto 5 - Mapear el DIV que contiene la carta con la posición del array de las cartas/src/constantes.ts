@@ -50,18 +50,18 @@ export const infoCartas: InfoCarta[] = [
 ];
 
 // Contenedores cartas
-export const elementoCarta1 = document.getElementById("imagen-carta-element-1");
-export const elementoCarta2 = document.getElementById("imagen-carta-element-2");
-export const elementoCarta3 = document.getElementById("imagen-carta-element-3");
-export const elementoCarta4 = document.getElementById("imagen-carta-element-4");
-export const elementoCarta5 = document.getElementById("imagen-carta-element-5");
-export const elementoCarta6 = document.getElementById("imagen-carta-element-6");
-export const elementoCarta7 = document.getElementById("imagen-carta-element-7");
-export const elementoCarta8 = document.getElementById("imagen-carta-element-8");
-export const elementoCarta9 = document.getElementById("imagen-carta-element-9");
-export const elementoCarta10 = document.getElementById("imagen-carta-element-10");
-export const elementoCarta11 = document.getElementById("imagen-carta-element-11");
-export const elementoCarta12 = document.getElementById("imagen-carta-element-12");
+export const elementoCarta1 = document.getElementById("carta-element-1");
+export const elementoCarta2 = document.getElementById("carta-element-2");
+export const elementoCarta3 = document.getElementById("carta-element-3");
+export const elementoCarta4 = document.getElementById("carta-element-4");
+export const elementoCarta5 = document.getElementById("carta-element-5");
+export const elementoCarta6 = document.getElementById("carta-element-6");
+export const elementoCarta7 = document.getElementById("carta-element-7");
+export const elementoCarta8 = document.getElementById("carta-element-8");
+export const elementoCarta9 = document.getElementById("carta-element-9");
+export const elementoCarta10 = document.getElementById("carta-element-10");
+export const elementoCarta11 = document.getElementById("carta-element-11");
+export const elementoCarta12 = document.getElementById("carta-element-12");
 
 
 

@@ -6,17 +6,17 @@ import * as constantes from "./constantes";
 // Rebice el array tablero.cartas y devuelve los elementos mezclados
 const barajarCartas = (cartas : constantes.Carta[]): constantes.Carta[] => {
   // Mientras queden elementos a mezclar
-  let current_index = cartas.length;
+  let indiceActual = cartas.length;
   let contador = 0;
 
   while (contador < tablero.cartas.length) {
     // Coge un elemento restante
-    let random_index = Math.floor(Math.random() * current_index);
-    current_index--;
+    let indiceAleatorio = Math.floor(Math.random() * indiceActual);
+    indiceActual--;
     
     // Mezcla la lista con el elemento aleatorio
-    [cartas[current_index], tablero.cartas[random_index]] = 
-    [tablero.cartas[random_index], cartas[current_index]];
+    [cartas[indiceActual], tablero.cartas[indiceAleatorio]] = 
+    [tablero.cartas[indiceAleatorio], cartas[indiceActual]];
     contador += 1;
   }
   
@@ -25,6 +25,8 @@ const barajarCartas = (cartas : constantes.Carta[]): constantes.Carta[] => {
 
 // Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
 export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: number ): boolean => {
+  console.log("Comprobando si la carta es volteable");
+  
   // Variable que almacena si la carta es volteable
   const carta = tablero.cartas[indice];
   
@@ -96,8 +98,7 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.
 
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
-  mostrarMensaje("");
-
+  console.log("dentro de voltear")
   // Recibe el número de carta y llama a mostrarCarta
   if (sePuedeVoltearLaCarta(tablero, indice)) {
     mostrarCarta(indice),
@@ -158,7 +159,7 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
 
   // Voltea todas las cartas al estado incial
   for (const elementoImagenHTML of constantes.elementosImagenHTML) {
-    if (elementoImagenHTML) {
+    if (elementoImagenHTML && elementoImagenHTML != undefined && elementoImagenHTML != null) {
       const elementoImagen = document.getElementById(elementoImagenHTML);
       elementoImagen?.setAttribute("src", "");
     }

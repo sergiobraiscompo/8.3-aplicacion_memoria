@@ -21,14 +21,15 @@ export const mostrarCarta = (indice: number) => {
     const elementoCarta = document.getElementById(constantes.elementosImagenHTML[indice]);
 
     // Carga la carta guardada en los elementos de imagen
-    if (elementoCarta) {
+    if (elementoCarta && elementoCarta != undefined && elementoCarta != null) {
        elementoCarta.setAttribute("src", tablero.cartas[indice].imagen);
     }
 }
 
 // Recibe un mensaje y lo muestra en pantalla
 export const mostrarMensaje = (mensaje: string) => {
-    if (constantes.elementoMensaje instanceof HTMLDivElement) {
+    if (constantes.elementoMensaje && constantes.elementoMensaje != undefined && constantes.elementoMensaje != null) {
+        console.log("mostrando mensaje")
         constantes.elementoMensaje.innerText = mensaje;
     }
 }
