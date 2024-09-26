@@ -3,15 +3,13 @@ import * as constantes from "./constantes";
 import { iniciaPartida, voltearLaCarta } from "./motor";
 
 export const eventos = () => {
-    console.log("Eventos cargados");
-
     if (constantes.botonEmpezarPartida && constantes.botonEmpezarPartida != undefined && constantes.botonEmpezarPartida != null) {
         constantes.botonEmpezarPartida.addEventListener("click", () => (iniciaPartida(tablero)));
     }
 
     // Elementos carta
     if (constantes.elementoCarta1 && constantes.elementoCarta1 != undefined && constantes.elementoCarta1 != null) {
-        constantes.elementoCarta1.addEventListener("click", () => {console.log("clic")});
+        constantes.elementoCarta1.addEventListener("click", () => voltearLaCarta(tablero, 0));
     }
 
     if (constantes.elementoCarta2 && constantes.elementoCarta2 != undefined && constantes.elementoCarta2 != null) {

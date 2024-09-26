@@ -24,18 +24,16 @@ const barajarCartas = (cartas : constantes.Carta[]): constantes.Carta[] => {
 };
 
 // Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
-export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: number ): boolean => {
-  console.log("Comprobando si la carta es volteable");
-  
+export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: number ): boolean => {  
   // Variable que almacena si la carta es volteable
   const carta = tablero.cartas[indice];
   
   if (carta.estaVuelta) {
-    mostrarMensaje("Esta carta ya está girada, elige otra carta que esté boca abajo.");
+    mostrarMensaje("Esta carta ya está girada. ¡Elige otra carta que esté boca abajo! ^^");
   }
 
   if (carta.encontrada) {
-    mostrarMensaje("Esta carta ya tiene pareja, elige otra carta que esté boca abajo.");
+    mostrarMensaje("Esta carta ya tiene pareja. ¡Elige otra carta que esté boca abajo! ^^");
   }
 
   if(tablero.estadoPartida === "PartidaNoIniciada" || tablero.estadoPartida === "PartidaCompleta") {
@@ -81,6 +79,7 @@ const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indice
     tablero.indiceCartaVolteadaA = -1;
     tablero.indiceCartaVolteadaB = -1;
     
+    mostrarMensaje("");
   }, 1000);
   
   mostrarIntentos();
@@ -98,15 +97,13 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.
 
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
-  console.log("dentro de voltear")
   // Recibe el número de carta y llama a mostrarCarta
   if (sePuedeVoltearLaCarta(tablero, indice)) {
     mostrarCarta(indice),
     tablero.cartas[indice].estaVuelta = true
-    
+
     // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
     if (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB) {
-      console.log("Comprobando si son pareja");
       (tablero.indiceCartaVolteadaA > -1)
       ? (
         tablero.indiceCartaVolteadaB = indice,
@@ -123,6 +120,7 @@ export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): voi
       )
     }
 
+
     mostrarIntentos();
   };
 }
@@ -136,6 +134,7 @@ export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
 
   
   mostrarIntentos();
+  mostrarMensaje("¡Partida completada!");
 
   partidaGanada
   ? (tablero.estadoPartida = "PartidaCompleta", mostrarMensaje("¡¡¡Patrida Ganada!!!"))
@@ -164,7 +163,7 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
       elementoImagen?.setAttribute("src", "");
     }
   }
-  
+
   // Cambia el estado de la partida y la prepara
   barajarCartas(tablero.cartas);
   mostrarIntentos();

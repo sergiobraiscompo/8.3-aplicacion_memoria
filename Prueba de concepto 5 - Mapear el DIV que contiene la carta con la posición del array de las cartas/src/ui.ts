@@ -1,17 +1,25 @@
 import { tablero } from "./model";
 import * as constantes from "./constantes";
 
-
 // Recibe y muestra el número de intentos
 export const mostrarIntentos = () => {
-    if (constantes.elementoIntentos instanceof HTMLDivElement) { 
+    const elementoTitulo = document.getElementById("elemento-titulo");
+
+    if (!elementoTitulo && elementoTitulo === null && elementoTitulo === undefined) {
         const titulo = document.createElement("h3");
-        titulo.innerText = "INTENTOS";
+        titulo.id="elemento-titulo";
+    }
+
+    if (
+        constantes.elementoIntentos && constantes.elementoIntentos != null && constantes.elementoIntentos != undefined
+        && elementoTitulo && elementoTitulo != null && elementoTitulo != undefined
+    ) { 
+        elementoTitulo.innerText = "INTENTOS";
 
         const intentos = document.createElement("span");
         intentos.innerText = tablero.intentos.toString();
 
-        constantes.elementoIntentos.appendChild(titulo);
+        constantes.elementoIntentos.appendChild(elementoTitulo);
         constantes.elementoIntentos.appendChild(intentos)
     }
 }
@@ -29,7 +37,6 @@ export const mostrarCarta = (indice: number) => {
 // Recibe un mensaje y lo muestra en pantalla
 export const mostrarMensaje = (mensaje: string) => {
     if (constantes.elementoMensaje && constantes.elementoMensaje != undefined && constantes.elementoMensaje != null) {
-        console.log("mostrando mensaje")
         constantes.elementoMensaje.innerText = mensaje;
     }
 }
