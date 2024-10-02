@@ -1,9 +1,8 @@
 
-export const carta_element = document.getElementById("carta-element");
-export const carta_1_element = document.getElementById("carta-element-1"); 
-export const carta_2_element = document.getElementById("carta-element-2"); 
-export const imagen_carta_1_element = document.getElementById("imagen-carta-element-1");
-export const imagen_carta_2_element = document.getElementById("imagen-carta-element-2");
+export const carta1Element = document.getElementById("carta-element-1"); 
+export const carta2Element = document.getElementById("carta-element-2"); 
+export const elementoImagen1 = document.getElementById("imagen-carta-element-1")
+export const elementoImagen2 = document.getElementById("imagen-carta-element-2")
 
 
 export interface Carta {

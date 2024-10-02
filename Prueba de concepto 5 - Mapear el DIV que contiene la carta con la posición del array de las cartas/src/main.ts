@@ -1,3 +1,5 @@
-import * as shell from "./shell";
+import { eventos } from "./shell";
 
-shell
+document.addEventListener("DOMContentLoaded", () => {
+    eventos();
+});

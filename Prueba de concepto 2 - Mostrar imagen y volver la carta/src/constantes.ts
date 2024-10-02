@@ -1,4 +1,6 @@
-export const carta_element = document.getElementById("carta-element");
+export const cartaElement = document.getElementById("carta-element");
+export const imagenElement = document.getElementById("imagen-carta-element");
+
 
 export interface Carta {
     idFoto: number;

@@ -6,17 +6,17 @@ import * as constantes from "./constantes";
 // Rebice el array tablero.cartas y devuelve los elementos mezclados
 const barajarCartas = (cartas : constantes.Carta[]): constantes.Carta[] => {
   // Mientras queden elementos a mezclar
-  let current_index = cartas.length;
+  let indiceActual = cartas.length;
   let contador = 0;
 
   while (contador < tablero.cartas.length) {
     // Coge un elemento restante
-    let random_index = Math.floor(Math.random() * current_index);
-    current_index--;
+    let indiceAleatorio = Math.floor(Math.random() * indiceActual);
+    indiceActual--;
     
     // Mezcla la lista con el elemento aleatorio
-    [cartas[current_index], tablero.cartas[random_index]] = 
-    [tablero.cartas[random_index], cartas[current_index]];
+    [cartas[indiceActual], tablero.cartas[indiceAleatorio]] = 
+    [tablero.cartas[indiceAleatorio], cartas[indiceActual]];
     contador += 1;
   }
   
@@ -24,16 +24,16 @@ const barajarCartas = (cartas : constantes.Carta[]): constantes.Carta[] => {
 };
 
 // Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
-export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: number ): boolean => {
+export const sePuedeVoltearLaCarta = (tablero: constantes.Tablero, indice: number ): boolean => {  
   // Variable que almacena si la carta es volteable
   const carta = tablero.cartas[indice];
   
   if (carta.estaVuelta) {
-    mostrarMensaje("Esta carta ya está girada, elige otra carta que esté boca abajo.");
+    mostrarMensaje("Esta carta ya está girada. ¡Elige otra carta que esté boca abajo! ^^");
   }
 
   if (carta.encontrada) {
-    mostrarMensaje("Esta carta ya tiene pareja, elige otra carta que esté boca abajo.");
+    mostrarMensaje("Esta carta ya tiene pareja. ¡Elige otra carta que esté boca abajo! ^^");
   }
 
   if(tablero.estadoPartida === "PartidaNoIniciada" || tablero.estadoPartida === "PartidaCompleta") {
@@ -65,8 +65,8 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
 const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indiceB :number) : void => {
   
   setTimeout(() => {
-    const imagenA = document.getElementById(constantes.elementosImagenHTML[indiceA].acceso);
-    const imagenB = document.getElementById(constantes.elementosImagenHTML[indiceB].acceso);
+    const imagenA = document.getElementById(constantes.elementosImagenHTML[indiceA]);
+    const imagenB = document.getElementById(constantes.elementosImagenHTML[indiceB]);
     
     if (imagenA && imagenB) {
       imagenA.setAttribute("src", "");
@@ -79,6 +79,7 @@ const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indice
     tablero.indiceCartaVolteadaA = -1;
     tablero.indiceCartaVolteadaB = -1;
     
+    mostrarMensaje("");
   }, 1000);
   
   mostrarIntentos();
@@ -96,16 +97,13 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.
 
 // Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
 export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
-  mostrarMensaje("");
-
   // Recibe el número de carta y llama a mostrarCarta
   if (sePuedeVoltearLaCarta(tablero, indice)) {
     mostrarCarta(indice),
     tablero.cartas[indice].estaVuelta = true
-    
+
     // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
     if (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB) {
-      console.log("Comprobando si son pareja");
       (tablero.indiceCartaVolteadaA > -1)
       ? (
         tablero.indiceCartaVolteadaB = indice,
@@ -122,6 +120,7 @@ export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): voi
       )
     }
 
+
     mostrarIntentos();
   };
 }
@@ -135,9 +134,9 @@ export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
 
   
   mostrarIntentos();
-
+  
   partidaGanada
-  ? (tablero.estadoPartida = "PartidaCompleta", mostrarMensaje("¡¡¡Patrida Ganada!!!"))
+  ? (tablero.estadoPartida = "PartidaCompleta", mostrarMensaje("¡¡¡Patrida Completada!!!"))
   : (tablero.estadoPartida = "CeroCartasLevantadas");
   
   return partidaGanada;
@@ -158,12 +157,12 @@ export const iniciaPartida = (tablero: constantes.Tablero): void => {
 
   // Voltea todas las cartas al estado incial
   for (const elementoImagenHTML of constantes.elementosImagenHTML) {
-    if (elementoImagenHTML.acceso) {
-      const elementoImagen = document.getElementById(elementoImagenHTML.acceso);
+    if (elementoImagenHTML && elementoImagenHTML != undefined && elementoImagenHTML != null) {
+      const elementoImagen = document.getElementById(elementoImagenHTML);
       elementoImagen?.setAttribute("src", "");
     }
   }
-  
+
   // Cambia el estado de la partida y la prepara
   barajarCartas(tablero.cartas);
   mostrarIntentos();

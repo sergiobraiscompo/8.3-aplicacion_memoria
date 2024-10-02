@@ -7,24 +7,10 @@ EstadoPartida = "PartidaNoIniciada", una vez que se pulse Iniciar partida el est
 export const botonEmpezarPartida = document.getElementById("boton-empezar-partida");
 
 // elemento intentos
-export const elemento_intentos = document.getElementById("intentos-element");
+export const elementoIntentos = document.getElementById("intentos-element");
 
 // elemento mensajes
-export const elemento_mensaje = document.getElementById("mensaje-element");
-
-// Elementos cartas
-export const elemento_carta_1 = document.getElementById("carta-element-1");
-export const elemento_carta_2 = document.getElementById("carta-element-2");
-export const elemento_carta_3 = document.getElementById("carta-element-3");
-export const elemento_carta_4 = document.getElementById("carta-element-4");
-export const elemento_carta_5 = document.getElementById("carta-element-5");
-export const elemento_carta_6 = document.getElementById("carta-element-6");
-export const elemento_carta_7 = document.getElementById("carta-element-7");
-export const elemento_carta_8 = document.getElementById("carta-element-8");
-export const elemento_carta_9 = document.getElementById("carta-element-9");
-export const elemento_carta_10 = document.getElementById("carta-element-10");
-export const elemento_carta_11 = document.getElementById("carta-element-11");
-export const elemento_carta_12 = document.getElementById("carta-element-12");
+export const elementoMensaje = document.getElementById("mensaje-element");
 
 export type EstadoPartida =
 | "PartidaNoIniciada"
@@ -63,18 +49,36 @@ export const infoCartas: InfoCarta[] = [
     {idFoto: 6, imagen: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/memo/6.png"},
 ];
 
-// Almacenan las cartas en su elemento HTML
+// Contenedores cartas
+export const elementoCarta1 = document.getElementById("carta-element-1");
+export const elementoCarta2 = document.getElementById("carta-element-2");
+export const elementoCarta3 = document.getElementById("carta-element-3");
+export const elementoCarta4 = document.getElementById("carta-element-4");
+export const elementoCarta5 = document.getElementById("carta-element-5");
+export const elementoCarta6 = document.getElementById("carta-element-6");
+export const elementoCarta7 = document.getElementById("carta-element-7");
+export const elementoCarta8 = document.getElementById("carta-element-8");
+export const elementoCarta9 = document.getElementById("carta-element-9");
+export const elementoCarta10 = document.getElementById("carta-element-10");
+export const elementoCarta11 = document.getElementById("carta-element-11");
+export const elementoCarta12 = document.getElementById("carta-element-12");
+
+
+
+
+
+//  Imágenes de las cartas del tablero
 export const elementosImagenHTML = [
-    { elemento: "imagen_1", acceso: "imagen-carta-element-1" },
-    { elemento: "imagen_2", acceso: "imagen-carta-element-2" },
-    { elemento: "imagen_3", acceso: "imagen-carta-element-3" },
-    { elemento: "imagen_4", acceso: "imagen-carta-element-4" },
-    { elemento: "imagen_5", acceso: "imagen-carta-element-5" },
-    { elemento: "imagen_6", acceso: "imagen-carta-element-6" },
-    { elemento: "imagen_7", acceso: "imagen-carta-element-7" },
-    { elemento: "imagen_8", acceso: "imagen-carta-element-8" },
-    { elemento: "imagen_9", acceso: "imagen-carta-element-9" },
-    { elemento: "imagen_10", acceso: "imagen-carta-element-10" },
-    { elemento: "imagen_11", acceso: "imagen-carta-element-11" },
-    { elemento: "imagen_12", acceso: "imagen-carta-element-12" }
-];
+    "imagen-carta-element-1",
+    "imagen-carta-element-2",
+    "imagen-carta-element-3",
+    "imagen-carta-element-4",
+    "imagen-carta-element-5",
+    "imagen-carta-element-6",
+    "imagen-carta-element-7",
+    "imagen-carta-element-8",
+    "imagen-carta-element-9",
+    "imagen-carta-element-10",
+    "imagen-carta-element-11",
+    "imagen-carta-element-12"
+]
