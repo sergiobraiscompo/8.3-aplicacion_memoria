@@ -134,10 +134,9 @@ export const esPartidaCompleta = (tablero: constantes.Tablero): boolean => {
 
   
   mostrarIntentos();
-  mostrarMensaje("¡Partida completada!");
-
+  
   partidaGanada
-  ? (tablero.estadoPartida = "PartidaCompleta", mostrarMensaje("¡¡¡Patrida Ganada!!!"))
+  ? (tablero.estadoPartida = "PartidaCompleta", mostrarMensaje("¡¡¡Patrida Completada!!!"))
   : (tablero.estadoPartida = "CeroCartasLevantadas");
   
   return partidaGanada;
