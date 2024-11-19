@@ -7,12 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-
+.gitignore
 
 #carpetas node_modules
 node_modules
-
-
+Prueba de concepto 1 - barajar las cartas\node_modules
+Prueba de concepto 2 - Mostrar imagen y volver la carta\node_modules
+Prueba de concepto 3 - Mostrar un Grid de cartas\node_modules
+Prueba de concepto 4 - Mostrar segunda imagen y volver las dos cartas\node_modules
+Prueba de concepto 5 - Mapear el DIV que contiene la carta con la posición del array de las cartas\node_modules
 
 
 
