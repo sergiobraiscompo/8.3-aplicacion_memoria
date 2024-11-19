@@ -7,7 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+
+
+#carpetas node_modules
 node_modules
+Prueba de concepto 4 - Mostrar segunda imagen y volver las dos cartas\node_modules
+
+
+
+
+
+
 dist
 dist-ssr
 *.local
