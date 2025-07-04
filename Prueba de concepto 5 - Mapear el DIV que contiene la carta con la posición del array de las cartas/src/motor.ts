@@ -95,12 +95,6 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: constantes.
   return ambasSonPareja;
 };
 
-// Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
-export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
-  // Recibe el número de carta y llama a mostrarCarta
-  if (sePuedeVoltearLaCarta(tablero, indice)) {
-    mostrarCarta(indice),
-    tablero.cartas[indice].estaVuelta = true
 
     // Comprueba si no hay 2 cartas volteadas y el índice no aparece en el tablero
     if (tablero.indiceCartaVolteadaA && tablero.indiceCartaVolteadaB) {
