@@ -34,6 +34,13 @@ export const mostrarCarta = (indice: number) => {
     }
 }
 
+// Llama a sePuedeVoltearLaCarta y si devuelve true cambia la imagen y el estado de la carta
+export const voltearLaCarta = (tablero: constantes.Tablero, indice: number): void => {
+  // Recibe el número de carta y llama a mostrarCarta
+  if (sePuedeVoltearLaCarta(tablero, indice)) {
+    mostrarCarta(indice),
+    tablero.cartas[indice].estaVuelta = true
+
 // Recibe un mensaje y lo muestra en pantalla
 export const mostrarMensaje = (mensaje: string) => {
     if (constantes.elementoMensaje && constantes.elementoMensaje != undefined && constantes.elementoMensaje != null) {
