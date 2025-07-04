@@ -53,8 +53,8 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
   tablero.cartas[indiceB].encontrada = true;
   tablero.estadoPartida = "CeroCartasLevantadas";
   
-  tablero.indiceCartaVolteadaA = 'undefined';
-  tablero.indiceCartaVolteadaB = 'undefined';
+  tablero.indiceCartaVolteadaA = undefined;
+  tablero.indiceCartaVolteadaB = undefined;
   
   esPartidaCompleta(tablero);
   mostrarIntentos();
@@ -76,8 +76,8 @@ const parejaNoEncontrada = (tablero: constantes.Tablero, indiceA :number, indice
     tablero.estadoPartida = "CeroCartasLevantadas";
     tablero.cartas[indiceA].estaVuelta = false;
     tablero.cartas[indiceB].estaVuelta = false;
-    tablero.indiceCartaVolteadaA = -1;
-    tablero.indiceCartaVolteadaB = -1;
+    tablero.indiceCartaVolteadaA = undefined;
+    tablero.indiceCartaVolteadaB = undefined;
     
     mostrarMensaje("");
   }, 1000);
