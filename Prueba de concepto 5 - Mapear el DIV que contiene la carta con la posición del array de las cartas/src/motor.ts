@@ -53,8 +53,8 @@ const parejaEncontrada = (tablero: constantes.Tablero, indiceA: number, indiceB:
   tablero.cartas[indiceB].encontrada = true;
   tablero.estadoPartida = "CeroCartasLevantadas";
   
-  tablero.indiceCartaVolteadaA = -1;
-  tablero.indiceCartaVolteadaB = -1;
+  tablero.indiceCartaVolteadaA = 'undefined';
+  tablero.indiceCartaVolteadaB = 'undefined';
   
   esPartidaCompleta(tablero);
   mostrarIntentos();
